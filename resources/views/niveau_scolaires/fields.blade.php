@@ -7,6 +7,6 @@
 <!-- Description Field -->
 <div class="form-group col-sm-12">
     {!! Form::label('description', __('models/niveauScolaires.fields.description').':') !!}
-    <textarea name="description" id="description" cols="80" rows="5" required>{!! old('description') !!}</textarea>
+    {!! Form::textarea('description',old('description'), null, ['class' => 'form-control', 'required', 'maxlength' => 255, 'maxlength' => 255]) !!}
     {{-- {!! Form::text('description', null, ['class' => 'form-control', 'required', 'maxlength' => 255, 'maxlength' => 255]) !!} --}}
 </div>

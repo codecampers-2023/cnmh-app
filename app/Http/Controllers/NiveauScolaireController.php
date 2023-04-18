@@ -2,12 +2,15 @@
 
 namespace App\Http\Controllers;
 
+use App\Exports\NiveauScolaireExport;
 use App\Http\Requests\CreateNiveauScolaireRequest;
 use App\Http\Requests\UpdateNiveauScolaireRequest;
 use App\Http\Controllers\AppBaseController;
+use App\Imports\NiveauScolaireImport;
 use App\Repositories\NiveauScolaireRepository;
 use Illuminate\Http\Request;
 use Flash;
+use Maatwebsite\Excel\Facades\Excel;
 
 class NiveauScolaireController extends AppBaseController
 {
@@ -24,8 +27,17 @@ class NiveauScolaireController extends AppBaseController
      */
     public function index(Request $request)
     {
+        $query = $request->input('query');
         $niveauScolaires = $this->niveauScolaireRepository->paginate();
+      
+       
 
+        if ($request->ajax()) {
+            return view('niveau_scolaires.table')
+                ->with('couvertureMedicals', $niveauScolaires);
+        }
+
+        
         return view('niveau_scolaires.index')
             ->with('niveauScolaires', $niveauScolaires);
     }
@@ -124,5 +136,13 @@ class NiveauScolaireController extends AppBaseController
         Flash::success(__('messages.deleted', ['model' => __('models/niveauScolaires.singular')]));
 
         return redirect(route('niveauScolaires.index'));
+    }
+
+    public function export(){
+        return Excel::download(new NiveauScolaireExport, 'NiveauScolaires.xlsx');
+    }
+    public function import(Request $request){
+        Excel::import(new NiveauScolaireImport , $request->file('file')->store('files'));
+        return redirect()->back();
     }
 }

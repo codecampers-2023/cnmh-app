@@ -23,7 +23,14 @@
                     <div class="col-md-12  ">
                         <div class="card card-primary card-create ">
                             <div class="card-header">
-                                <h3 class="card-title"> @lang('crud.create') un  @lang('models/niveauScolaires.singular')</h3>
+                                <h3 class="card-title"> @lang('crud.create')
+                                    @if (app()->getLocale() == 'fr')
+                                        {{ is_male_localisation('message.isMale') }} @lang(strtolower(__('models/niveauScolaires.singular')))
+                                    @else
+                                        @lang(strtolower(__('models/niveauScolaires.singular')))
+                                    @endif
+
+                                </h3>
                             </div>
                             <div class="card-body">
                                 {!! Form::open(['route' => 'niveauScolaires.store']) !!}
