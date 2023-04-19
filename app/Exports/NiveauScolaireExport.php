@@ -2,16 +2,16 @@
 
 namespace App\Exports;
 
-use App\Models\TypeHandicap;
+use App\Models\NiveauScolaire;
 use Maatwebsite\Excel\Concerns\FromCollection;
 
-class ExportTypehandicap implements FromCollection
+class NiveauScolaireExport implements FromCollection
 {
     /**
     * @return \Illuminate\Support\Collection
     */
     public function collection()
     {
-        return TypeHandicap::all();
+        return NiveauScolaire::all();
     }
 }

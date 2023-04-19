@@ -34,6 +34,8 @@ Route::resource('typeHandicaps', App\Http\Controllers\TypeHandicapController::cl
 Route::resource('typeHandicaps', App\Http\Controllers\TypeHandicapController::class);
 Route::resource('services', App\Http\Controllers\ServiceController::class);
 Route::resource('niveauScolaires', App\Http\Controllers\NiveauScolaireController::class);
+Route::get('/export_niveauScolaires',[NiveauScolaireController::class,'export'])->name('niveauScolaires.export');
+Route::post('/import_niveauScolaires',[NiveauScolaireController::class,'import'])->name('niveauScolaires.import');
 Route::resource('etatCivils', App\Http\Controllers\EtatCivilController::class);
 Route::resource('employes', App\Http\Controllers\EmployeController::class);
 Route::resource('reclamations', App\Http\Controllers\ReclamationController::class);
@@ -43,6 +45,3 @@ Route::resource('dossier-patients', App\Http\Controllers\DossierPatientControlle
 Route::resource('orientation-externes', App\Http\Controllers\OrientationExterneController::class);
 Route::resource('consultations', App\Http\Controllers\ConsultationController::class);
 Route::resource('rendez-vouses', App\Http\Controllers\RendezVousController::class);
-
-Route::get('/export_typehandicap',[TypeHandicapController::class,'export'])->name('typehandicap.export');
-Route::post('/import_typehandicap',[TypeHandicapController::class,'import'])->name('typehandicap.import');

@@ -2,10 +2,10 @@
 
 namespace App\Imports;
 
-use App\Models\TypeHandicap;
+use App\Models\NiveauScolaire;
 use Maatwebsite\Excel\Concerns\ToModel;
 
-class importTypehandicap implements ToModel
+class NiveauScolaireImport implements ToModel
 {
     /**
     * @param array $row
@@ -14,7 +14,8 @@ class importTypehandicap implements ToModel
     */
     public function model(array $row)
     {
-        return new TypeHandicap([
+        return new NiveauScolaire([
+            //
             'nom' => $row[1],
             'description' => $row[2],
         ]);
