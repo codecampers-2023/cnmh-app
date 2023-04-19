@@ -83,3 +83,5 @@
 
 
  
+Route::get('/export_niveauScolaires',[NiveauScolaireController::class,'export'])->name('niveauScolaires.export');
+Route::post('/import_niveauScolaires',[NiveauScolaireController::class,'import'])->name('niveauScolaires.import');
