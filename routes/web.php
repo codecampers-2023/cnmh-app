@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\CouvertureMedicalController;
+use App\Http\Controllers\NiveauScolaireController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -33,7 +34,8 @@ Route::resource('typeHandicaps', App\Http\Controllers\TypeHandicapController::cl
 Route::resource('typeHandicaps', App\Http\Controllers\TypeHandicapController::class);
 Route::resource('services', App\Http\Controllers\ServiceController::class);
 Route::resource('niveauScolaires', App\Http\Controllers\NiveauScolaireController::class);
-
+Route::get('/export_niveauScolaires',[NiveauScolaireController::class,'export'])->name('niveauScolaires.export');
+Route::post('/import_niveauScolaires',[NiveauScolaireController::class,'import'])->name('niveauScolaires.import');
 Route::resource('etatCivils', App\Http\Controllers\EtatCivilController::class);
 Route::resource('employes', App\Http\Controllers\EmployeController::class);
 Route::resource('reclamations', App\Http\Controllers\ReclamationController::class);
