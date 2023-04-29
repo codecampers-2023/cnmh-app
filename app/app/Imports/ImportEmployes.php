@@ -32,6 +32,7 @@ class ImportEmployes implements ToModel,WithStartRow
             Fonction::create([
                 'nom'=>$row[8]
             ]);
+
             $fonction = Fonction::where('nom',$row[8])->get();
         }
 
