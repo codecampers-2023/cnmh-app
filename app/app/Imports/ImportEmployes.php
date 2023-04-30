@@ -21,14 +21,14 @@ class ImportEmployes implements ToModel,WithStartRow
         $date_embauche = date('Y-m-d', strtotime($row[7]));
         $fonction = Fonction::where('nom',$row[8])->get();
         if(empty($fonction->nom)){
-            $validator = Validator::make(['nom' => $row[8]], [
-                'nom' => 'required|string|max:255|unique:fonctions,nom',
-            ]);
+            // $validator = Validator::make(['nom' => $row[8]], [
+            //     'nom' => 'required|string|max:255|unique:fonctions,nom',
+            // ]);
 
-            if ($validator->fails()) {
-                // Handle validation errors
-                throw new \Exception($validator->errors()->first());
-            }
+            // if ($validator->fails()) {
+            //     // Handle validation errors
+            //     throw new \Exception($validator->errors()->first());
+            // }
             Fonction::create([
                 'nom'=>$row[8]
             ]);
