@@ -22,19 +22,19 @@ class ConsultationController extends AppBaseController
     /**
      * Display a listing of the Consultation.
      */
-    public function index(Request $request)
+    public function index(Request $request,$model)
     {
-        
+        $title = $model;
+
         $query = $request->input('query');
         $consultations = $this->consultationRepository->paginate($query);
-       
+
         if ($request->ajax()) {
             return view('consultations.table')
                 ->with('consultations', $consultations);
         }
 
-        return view('consultations.index')
-            ->with('consultations', $consultations);
+        return view('consultations.index',compact('consultations','title'));
     }
 
     /**

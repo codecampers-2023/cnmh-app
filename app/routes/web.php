@@ -1,6 +1,6 @@
 <?php
 
-
+use App\Http\Controllers\ConsultationController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\EmployeController;
 use App\Http\Controllers\ServiceController;
@@ -43,7 +43,6 @@ Route::resource('services', App\Http\Controllers\ServiceController::class);
 Route::get('/export_service',[ServiceController::class,'export'])->name('services.export');
 Route::post('/import_service',[ServiceController::class,'import'])->name('services.import');
 Route::resource('niveauScolaires', App\Http\Controllers\NiveauScolaireController::class);
-Route::resource('etatCivils', EtatCivilController::class);
 
 //employes routes
 Route::resource('employes', App\Http\Controllers\EmployeController::class);
@@ -55,7 +54,15 @@ Route::resource('fonctions', App\Http\Controllers\FonctionController::class);
 Route::resource('patients', App\Http\Controllers\PatientController::class);
 Route::resource('dossier-patients', App\Http\Controllers\DossierPatientController::class);
 Route::resource('orientation-externes', App\Http\Controllers\OrientationExterneController::class);
+
+//consultation
+Route::get('/consultations/{model}',[ConsultationController::class,'index'])->name('consultations.index');
 Route::resource('consultations', App\Http\Controllers\ConsultationController::class);
+
+
+
+
+Route::resource('etatCivils', EtatCivilController::class);
 Route::resource('rendez-vouses', App\Http\Controllers\RendezVousController::class);
 
 Route::prefix('/root')->group(function() {
