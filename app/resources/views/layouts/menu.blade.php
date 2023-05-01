@@ -1,27 +1,13 @@
 @foreach (app_menu() as $group => $items)
     @if (strlen($group) < 1)
         @foreach ($items as $item)
-
-        <li class="nav-item">
-            @if (!empty($title))
-            <a href="{{ Route::has($item->url,$title) ? route($item->url) : $item->url }}"
-                class="nav-link {{ Route::is($item->url . '*') ? 'active' : '' }}">
-                @else
-                {{$title = null}}
-                <a href="{{ Route::has($item->url,$title) ? route($item->url) : $item->url }}"
-                    class="nav-link {{ Route::is($item->url . '*') ? 'active' : '' }}">
-                    {!! $item->icon !!}
-                    <p> {{ $item->nom }} </p>
-                </a>
-                @endif
-            </li>
-            {{-- <li class="nav-item">
+            <li class="nav-item">
                 <a href="{{ Route::has($item->url) ? route($item->url) : $item->url }}"
                     class="nav-link {{ Route::is($item->url . '*') ? 'active' : '' }}">
                     {!! $item->icon !!}
                     <p> {{ $item->nom }} </p>
                 </a>
-            </li> --}}
+            </li>
         @endforeach
     @else
         @php
