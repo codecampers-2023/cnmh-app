@@ -1,4 +1,4 @@
-@foreach (app_menu() as $group => $items)
+{{-- @foreach (app_menu() as $group => $items)
     @if (strlen($group) < 1)
         @foreach ($items as $item)
             <li class="nav-item">
@@ -33,4 +33,4 @@
             </ul>
         </li>
     @endif
-@endforeach
+@endforeach --}}

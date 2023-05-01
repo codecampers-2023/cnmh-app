@@ -56,8 +56,17 @@ Route::resource('dossier-patients', App\Http\Controllers\DossierPatientControlle
 Route::resource('orientation-externes', App\Http\Controllers\OrientationExterneController::class);
 
 //consultation
-Route::get('/consultations/{model}',[ConsultationController::class,'index'])->name('consultations.index');
-Route::resource('consultations', App\Http\Controllers\ConsultationController::class);
+Route::get('/consultations/{model}', [ConsultationController::class, 'index'])
+    ->middleware(['ModelExists'])
+    ->name('consultations.index');
+Route::get('/consultations/create/{model}',[ConsultationController::class,'create'])->middleware(['ModelExists'])->name('consultations.create');
+Route::post('/consultations/store/{model}',[ConsultationController::class,'store'])->middleware(['ModelExists'])->name('consultations.store');
+Route::get('/consultations/destroy',[ConsultationController::class,'destroy'])->name('consultations.destroy');
+Route::get('/consultations/show',[ConsultationController::class,'show'])->name('consultations.show');
+Route::get('/consultations/edit',[ConsultationController::class,'edit'])->name('consultations.edit');
+Route::get('/consultations/update',[ConsultationController::class,'update'])->name('consultations.update');
+// Route::post('/consultations/{model}',[ConsultationController::class,'store'])->name('consultations.store');
+// Route::resource('consultations', App\Http\Controllers\ConsultationController::class);
 
 
 

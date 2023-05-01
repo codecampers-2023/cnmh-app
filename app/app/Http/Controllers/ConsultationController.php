@@ -40,23 +40,26 @@ class ConsultationController extends AppBaseController
     /**
      * Show the form for creating a new Consultation.
      */
-    public function create()
+    public function create($model)
     {
-        return view('consultations.create');
+        $title= $model;
+        return view('consultations.create',compact('title'));
     }
 
     /**
      * Store a newly created Consultation in storage.
      */
-    public function store(CreateConsultationRequest $request)
+    public function store(CreateConsultationRequest $request,$model)
     {
         $input = $request->all();
+        $Model = "App\\Models\\" . ucfirst($model);
+         $callModel =new $Model;
+        $callModel::create($input);
+        // $consultation = $this->consultationRepository->create($input);
 
-        $consultation = $this->consultationRepository->create($input);
+        // Flash::success(__('messages.saved', ['model' => __('models/consultations.singular')]));
 
-        Flash::success(__('messages.saved', ['model' => __('models/consultations.singular')]));
-
-        return redirect(route('consultations.index'));
+        return redirect(route('consultations.index',$model));
     }
 
     /**

@@ -13,6 +13,7 @@ class Consultation extends Model
         'date_consultation',
         'observation',
         'diagnostic',
+        'type',
         'bilan'
     ];
 
@@ -52,5 +53,20 @@ class Consultation extends Model
     public function typeHandicapConsultations(): \Illuminate\Database\Eloquent\Relations\HasMany
     {
         return $this->hasMany(\App\Models\TypeHandicapConsultation::class, 'consultation_id');
+    }
+
+    public function setTypeAttribute($value)
+    {
+        if ($value == 'dentiste') {
+            $this->attributes['type'] = 'dentiste';
+        } elseif ($value == 'medecinGeneral') {
+            $this->attributes['type'] = 'medecinGeneral';
+        } else {
+            $this->attributes['type'] = null;
+        }
+    }
+
+    public function consultable(){
+        return $this->morphTo();
     }
 }
