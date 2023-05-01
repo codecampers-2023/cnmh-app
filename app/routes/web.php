@@ -38,7 +38,6 @@ Route::resource('couvertureMedicals', App\Http\Controllers\CouvertureMedicalCont
 Route::get('/export_couvertureMedicals',[CouvertureMedicalController::class,'export'])->name('couvertureMedicals.export');
 Route::post('/import_couvertureMedicals',[CouvertureMedicalController::class,'import'])->name('couvertureMedicals.import');
 Route::resource('typeHandicaps', App\Http\Controllers\TypeHandicapController::class);
-Route::resource('typeHandicaps', App\Http\Controllers\TypeHandicapController::class);
 Route::resource('services', App\Http\Controllers\ServiceController::class);
 Route::get('/export_service',[ServiceController::class,'export'])->name('services.export');
 Route::post('/import_service',[ServiceController::class,'import'])->name('services.import');
