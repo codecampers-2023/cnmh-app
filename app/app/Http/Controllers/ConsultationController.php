@@ -65,17 +65,18 @@ class ConsultationController extends AppBaseController
     /**
      * Display the specified Consultation.
      */
-    public function show($id)
+    public function show($model,$id)
     {
+        $title =$model;
         $consultation = $this->consultationRepository->find($id);
 
         if (empty($consultation)) {
             Flash::error(__('models/consultations.singular').' '.__('messages.not_found'));
 
-            return redirect(route('consultations.index'));
+            return redirect(route('consultations.index',$title));
         }
 
-        return view('consultations.show')->with('consultation', $consultation);
+        return view('consultations.show',compact("consultation","title"));
     }
 
     /**

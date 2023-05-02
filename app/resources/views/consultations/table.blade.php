@@ -22,7 +22,7 @@
                     <td  style="width: 120px">
                         {!! Form::open(['route' => ['consultations.destroy', $consultation->id], 'method' => 'delete']) !!}
                         <div class='btn-group'>
-                            <a href="{{ route('consultations.show', [$consultation->id]) }}"
+                            <a href="{{ route('consultations.show', [$title,$consultation->id]) }}"
                                class='btn btn-default btn-sm'>
                                 <i class="far fa-eye"></i>
                             </a>

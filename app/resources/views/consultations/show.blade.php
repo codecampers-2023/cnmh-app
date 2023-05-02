@@ -6,12 +6,17 @@
             <div class="row mb-2">
                 <div class="col-sm-6">
                     <h1>
-@lang('models/consultations.singular') @lang('crud.detail')
+                        @lang('crud.details')
+                        @if (app()->getLocale() == 'fr')
+                           de la {{ strtolower(__('models/consultations.singular')) }} {{$title}}
+                        @else
+                            {{ strtolower(__('models/consultations.singular')) }}
+                        @endif
                     </h1>
                 </div>
                 <div class="col-sm-6">
                     <a class="btn btn-default float-right"
-                       href="{{ route('consultations.index') }}">
+                       href="{{ route('consultations.index',$title) }}">
                                                     @lang('crud.back')
                                             </a>
                 </div>

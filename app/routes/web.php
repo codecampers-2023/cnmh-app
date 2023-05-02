@@ -59,7 +59,7 @@ Route::get('/consultations/{model}', [ConsultationController::class, 'index'])->
 Route::get('/consultations/create/{model}',[ConsultationController::class,'create'])->middleware(['ModelExists'])->name('consultations.create');
 Route::post('/consultations/store/{model}',[ConsultationController::class,'store'])->middleware(['ModelExists'])->name('consultations.store');
 Route::delete('/consultations/{id}',[ConsultationController::class,'destroy'])->name('consultations.destroy');
-Route::get('/consultations/show',[ConsultationController::class,'show'])->name('consultations.show');
+Route::get('/consultations/show/{model}/{id}',[ConsultationController::class,'show'])->middleware(['ModelExists'])->name('consultations.show');
 Route::get('/consultations/edit',[ConsultationController::class,'edit'])->name('consultations.edit');
 Route::post('/consultations/update',[ConsultationController::class,'update'])->name('consultations.update');
 
