@@ -22,12 +22,13 @@ class ConsultationController extends AppBaseController
     /**
      * Display a listing of the Consultation.
      */
-    public function index(Request $request,$model)
+    public function index(Request $request,$modelName)
     {
-        $title = $model;
-
+        $title = $modelName;
+        $model = "App\\Models\\".ucfirst($modelName);
+        // $consultations = $model::where("type",$modelName)->get();
         $query = $request->input('query');
-        $consultations = $this->consultationRepository->paginate($query);
+        $consultations = $this->consultationRepository->where($model,'type',$modelName)->paginate();
 
         if ($request->ajax()) {
             return view('consultations.table')
