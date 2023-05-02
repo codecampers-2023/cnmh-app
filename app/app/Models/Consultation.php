@@ -66,7 +66,7 @@ class Consultation extends Model
         }
     }
 
-    public function consultable(){
-        return $this->morphTo();
+    public function dentiste(){
+        $this::where('type','dentiste');
     }
 }

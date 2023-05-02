@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\CreateConsultationRequest;
 use App\Http\Requests\UpdateConsultationRequest;
 use App\Http\Controllers\AppBaseController;
+use App\Models\Consultation;
 use App\Repositories\ConsultationRepository;
 use Illuminate\Http\Request;
 use Flash;
@@ -26,10 +27,8 @@ class ConsultationController extends AppBaseController
     {
         $title = $modelName;
         $model = "App\\Models\\".ucfirst($modelName);
-        // $consultations = $model::where("type",$modelName)->get();
         $query = $request->input('query');
-        $consultations = $this->consultationRepository->where($model,'type',$modelName)->paginate();
-
+         $consultations = $this->consultationRepository->where($model,'type',$modelName)->paginate(2);
         if ($request->ajax()) {
             return view('consultations.table')
                 ->with('consultations', $consultations);
@@ -134,6 +133,6 @@ class ConsultationController extends AppBaseController
 
         Flash::success(__('messages.deleted', ['model' => __('models/consultations.singular')]));
 
-        return redirect(route('consultations.index'));
+        return redirect()->back();
     }
 }

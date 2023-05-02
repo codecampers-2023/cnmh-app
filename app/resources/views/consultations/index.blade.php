@@ -48,14 +48,13 @@
     </div>
 
 @endsection
-
-{{-- @push('page_scripts')
+@push('page_scripts')
     <script>
         const tableContainer = $('#table-container')
         var searchQuery = ''
 
         const search = (query = '', page = 1) => {
-            $.ajax('{{ route('consultations.index') }}', {
+            $.ajax('{{ route('consultations.index',$title) }}', {
                 data: {
                     query: query,
                     page: page
@@ -86,6 +85,6 @@
             })
             updatePaginationLinks()
         })
-    </script> --}}
-{{-- @endpush --}}
+    </script>
+@endpush
 

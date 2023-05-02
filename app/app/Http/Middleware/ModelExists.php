@@ -16,22 +16,16 @@ class ModelExists
      */
     public function handle(Request $request, Closure $next)
     {
-        //Get url
-        $url = $_SERVER['REQUEST_URI'];
-        // Detected the last '/' character in url
-        $lastSlashPos = strrpos($url, "/");
-        $param = substr($url, $lastSlashPos + 1); // Extracts the parameter after the last '/' character
-        $model= 'App\\Models\\'.ucfirst($param);
+        //Get params
+        $params = $request->model;
+        //Define model
+        $model = 'App\\Models\\' . ucfirst($params);
+        //check if subclass model
+        if (is_subclass_of($model, 'App\\Models\\Consultation')) {
 
-            if(is_subclass_of($model, 'App\\Models\\Consultation')){
-
-                return $next($request);
-
+            return $next($request);
         } else {
             abort(404);
         }
-
-
-
     }
 }
