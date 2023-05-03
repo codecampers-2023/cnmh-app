@@ -23,12 +23,12 @@ class ReclamationFactory extends Factory
      */
     public function definition()
     {
-     
+
 
         return [
             'patient_id' => $this->faker->randomElement(Patient::pluck("id")),
-            'objet' => $this->faker->text($this->faker->numberBetween(5, 255)),
-            'reclamation' => $this->faker->text($this->faker->numberBetween(5, 255)),
+            'objet' => $this->faker->text($this->faker->numberBetween(5, 191)),
+            'reclamation' => $this->faker->text($this->faker->numberBetween(5, 191)),
             'date_reclamation' => $this->faker->date('Y-m-d H:i:s'),
             'created_at' => $this->faker->date('Y-m-d H:i:s'),
             'updated_at' => $this->faker->date('Y-m-d H:i:s')

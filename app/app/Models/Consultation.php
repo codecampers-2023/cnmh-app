@@ -22,13 +22,15 @@ class Consultation extends Model
         'date_consultation' => 'datetime',
         'observation' => 'string',
         'diagnostic' => 'string',
-        'bilan' => 'string'
+        'bilan' => 'string',
+        'type' => 'string'
     ];
 
     public static array $rules = [
         'date_enregistrement' => 'required',
         'date_consultation' => 'required',
         'observation' => 'nullable|string|max:65535',
+        'type' => 'nullable|string|max:65535',
         'diagnostic' => 'nullable|string|max:65535',
         'bilan' => 'nullable|string|max:65535',
         'created_at' => 'nullable',

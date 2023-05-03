@@ -12,6 +12,7 @@ class ConsultationRepository extends BaseRepository
         'date_consultation',
         'observation',
         'diagnostic',
+        'type',
         'bilan'
     ];
 
