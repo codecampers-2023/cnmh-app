@@ -6,6 +6,7 @@ use App\Http\Requests\CreateConsultationRequest;
 use App\Http\Requests\UpdateConsultationRequest;
 use App\Http\Controllers\AppBaseController;
 use App\Models\Consultation;
+use App\Models\DossierPatientConsultation;
 use App\Repositories\ConsultationRepository;
 use Illuminate\Http\Request;
 use Flash;
@@ -26,9 +27,16 @@ class ConsultationController extends AppBaseController
     public function index(Request $request,$modelName)
     {
         $title = $modelName;
-        $model = "App\\Models\\".ucfirst($modelName);
+        // $model = "App\\Models\\".ucfirst($modelName);
         $query = $request->input('query');
-         $consultations = $this->consultationRepository->where($model,'type',$modelName)->paginate();
+        $consultations = DossierPatientConsultation::
+        join('dossier_patients', 'dossier_patient_consultation.dossier_patient_id', '=', 'dossier_patients.id')
+        ->join('consultations', 'dossier_patient_consultation.consultation_id', '=', 'consultations.id')
+        ->join('patients', 'dossier_patients.patient_id', '=', 'patients.id')
+        ->where('consultations.type',$modelName)
+        ->select('*')
+        ->paginate();
+        //  $consultations = $this->consultationRepository->where($model,'type',$modelName)->paginate();
         if ($request->ajax()) {
             return view('consultations.table')
                 ->with('consultations', $consultations);
