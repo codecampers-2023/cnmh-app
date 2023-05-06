@@ -63,6 +63,8 @@ Route::get('/consultations/show/{model}/{id}',[ConsultationController::class,'sh
 Route::get('/consultations/edit',[ConsultationController::class,'edit'])->name('consultations.edit');
 Route::post('/consultations/update',[ConsultationController::class,'update'])->name('consultations.update');
 
+Route::get('/consultations/rendezVous/{model}', [ConsultationController::class, 'Ajouter_RendezVous'])->middleware(['ModelExists'])->name('consultations.rendezVous');
+Route::get('/consultations/patient/{model}', [ConsultationController::class, 'patient'])->middleware(['ModelExists'])->name('consultations.patient');
 
 
 
