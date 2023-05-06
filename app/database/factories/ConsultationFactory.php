@@ -29,7 +29,7 @@ class ConsultationFactory extends Factory
             'observation' => $this->faker->text($this->faker->numberBetween(5, 10)),
             'diagnostic' => $this->faker->text($this->faker->numberBetween(5, 10)),
             'bilan' => $this->faker->text($this->faker->numberBetween(5, 10)),
-            'type'=> $this->faker->randomElement(['dentiste','MedecinGeneral']),
+            'type'=> $this->faker->randomElement(['dentiste']),
             'created_at' => $this->faker->date('Y-m-d H:i:s'),
             'updated_at' => $this->faker->date('Y-m-d H:i:s')
         ];

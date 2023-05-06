@@ -28,7 +28,7 @@ class ConsultationController extends AppBaseController
         $title = $modelName;
         $model = "App\\Models\\".ucfirst($modelName);
         $query = $request->input('query');
-         $consultations = $this->consultationRepository->where($model,'type',$modelName)->paginate(2);
+         $consultations = $this->consultationRepository->where($model,'type',$modelName)->paginate();
         if ($request->ajax()) {
             return view('consultations.table')
                 ->with('consultations', $consultations);
