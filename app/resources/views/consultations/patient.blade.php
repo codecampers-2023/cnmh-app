@@ -188,7 +188,7 @@
                                         <tbody>
                                             <tr>
                                                 <td>
-                                                    <img width="99" height="99" src="../assets/dist/img/User-avatar.svg.png">
+                                                    <img width="99" height="99" src="{{$dossier_patient->patient->image }}">
                                                 </td>
                                                 <td>
                                                 </td>
@@ -266,7 +266,7 @@
                                 </div>
                             </div>
                             <div class="ml-4 mb-3">
-                                <a href="{{route('consultations.index',request()->model)}} " class="btn btn-primary">Previous</a>
+                                <a href="{{route('consultations.rendezVous',request()->model)}} " class="btn btn-primary">Previous</a>
                                 <button class="btn btn-primary">Next</button>
                             </div>
                         </div>

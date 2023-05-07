@@ -72,12 +72,13 @@
         display: block;
     }
 
-        .md-stepper-horizontal .md-step.editable .md-step-circle {
-    -moz-transform: scaleX(-1);
-    -o-transform: scaleX(-1);
-    -webkit-transform: scaleX(-1);
-    transform: scaleX(-1);
+    .md-stepper-horizontal .md-step.editable .md-step-circle {
+        -moz-transform: scaleX(-1);
+        -o-transform: scaleX(-1);
+        -webkit-transform: scaleX(-1);
+        transform: scaleX(-1);
     }
+
     .md-stepper-horizontal .md-step.editable .md-step-circle:before {
         /* font-family:'FontAwesome'; */
         font-weight: 100;
@@ -106,7 +107,7 @@
         font-weight: 600;
     }
 
-     .md-stepper-horizontal .md-step .md-step-optional {
+    .md-stepper-horizontal .md-step .md-step-optional {
         font-size: 12px;
     }
 
@@ -181,11 +182,8 @@
 
                         <div class="card-body p-0">
                             <div class="table-responsive">
-                                @php
-                                    $url = parse_url( $_SERVER['REQUEST_URI']);
-                                    var_dump($url);
-                                @endphp
-                                <form action="{{ route('consultations.patient',request()->model) }}" method="GET">
+
+                                <form action="{{ route('consultations.patient', request()->model) }}" method="GET">
 
                                     <table class="table table-striped" id="tuteurs-table">
                                         <thead>
@@ -204,7 +202,8 @@
                                                 <tr>
                                                     <td>
 
-                                                        <input type="radio" value="{{ $dossier_patient->id }}" name="dossier_patients"
+                                                        <input required type="radio" value="{{ $dossier_patient->id }}"
+                                                            name="dossier_patients"
                                                             aria-label="Radio button for following text input">
                                                     </td>
 
@@ -214,7 +213,7 @@
                                                     <td>{{ $dossier_patient->patient->prenom }}</td>
                                                     <td>{{ $dossier_patient->patient->telephone }}</td>
                                                 </tr>
-                                           @endforeach
+                                            @endforeach
                                         </tbody>
 
                                     </table>
@@ -222,7 +221,8 @@
 
                             </div>
                             <div class="ml-4 mb-3">
-                                <a href="{{route('consultations.index',request()->model)}} " class="btn btn-primary">Previous</a>
+                                <a href="{{ route('consultations.index', request()->model) }} "
+                                    class="btn btn-primary">Previous</a>
                                 <button class="btn btn-primary">Next</button>
                             </div>
                             </form>

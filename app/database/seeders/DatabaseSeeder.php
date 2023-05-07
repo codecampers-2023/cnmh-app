@@ -38,8 +38,8 @@ class DatabaseSeeder extends Seeder
             DossierPatientConsultationTableSeeder::class,
             ProjectsTableSeeder::class,
             ServicesTableSeeder::class,
-            OrientationExternesTableSeeder::class,
             ReclamationsTableSeeder::class,
+            // OrientationExternesTableSeeder::class,
             // MembersTableSeeder::class,
         ]);
 
