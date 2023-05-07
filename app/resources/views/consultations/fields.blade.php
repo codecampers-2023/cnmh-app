@@ -39,3 +39,6 @@
     {!! Form::label('bilan', __('models/consultations.fields.bilan').':') !!}
     {!! Form::textarea('bilan', null, ['class' => 'form-control', 'maxlength' => 65535, 'maxlength' => 65535]) !!}
 </div>
+
+    {!! Form::hidden('dossier_patients',request()->dossier_patients , ['class' => 'form-control', 'maxlength' => 65535, 'maxlength' => 65535]) !!}
+

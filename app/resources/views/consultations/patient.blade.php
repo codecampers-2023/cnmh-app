@@ -72,12 +72,13 @@
         display: block;
     }
 
-        .md-stepper-horizontal .md-step.editable .md-step-circle {
-    -moz-transform: scaleX(-1);
-    -o-transform: scaleX(-1);
-    -webkit-transform: scaleX(-1);
-    transform: scaleX(-1);
+    .md-stepper-horizontal .md-step.editable .md-step-circle {
+        -moz-transform: scaleX(-1);
+        -o-transform: scaleX(-1);
+        -webkit-transform: scaleX(-1);
+        transform: scaleX(-1);
     }
+
     .md-stepper-horizontal .md-step.editable .md-step-circle:before {
         /* font-family:'FontAwesome'; */
         font-weight: 100;
@@ -106,7 +107,7 @@
         font-weight: 600;
     }
 
-     .md-stepper-horizontal .md-step .md-step-optional {
+    .md-stepper-horizontal .md-step .md-step-optional {
         font-size: 12px;
     }
 
@@ -149,8 +150,6 @@
             @include('flash::message')
 
             <div class="clearfix"></div>
-
-
             <div class="row">
 
                 <div class="col-md-12">
@@ -180,7 +179,8 @@
                         <br>
 
 
-                        <div id="information-part" class="content" role="tabpanel" aria-labelledby="information-part-trigger">
+                        <div id="information-part" class="content" role="tabpanel"
+                            aria-labelledby="information-part-trigger">
                             <div class="d-flex">
 
                                 <div class="card-body">
@@ -188,7 +188,8 @@
                                         <tbody>
                                             <tr>
                                                 <td>
-                                                    <img width="99" height="99" src="{{$dossier_patient->patient->image }}">
+                                                    <img width="99" height="99"
+                                                        src="{{ $dossier_patient->patient->image }}">
                                                 </td>
                                                 <td>
                                                 </td>
@@ -197,7 +198,7 @@
                                                     Numero:
                                                 </td>
                                                 <td>
-                                                    {{$dossier_patient->numero_dossier }}
+                                                    {{ $dossier_patient->numero_dossier }}
                                                 </td>
                                             </tr>
                                             <tr>
@@ -205,7 +206,7 @@
                                                     Nom:
                                                 </td>
                                                 <td>
-                                                    {{$dossier_patient->patient->nom }}
+                                                    {{ $dossier_patient->patient->nom }}
 
                                                 </td>
                                             </tr>
@@ -215,7 +216,7 @@
                                                 </td>
                                                 <td>
 
-                                                    {{$dossier_patient->patient->prenom }}
+                                                    {{ $dossier_patient->patient->prenom }}
                                                 </td>
                                             </tr>
                                             <tr>
@@ -223,7 +224,7 @@
                                                     Telephone:
                                                 </td>
                                                 <td>
-                                                    {{$dossier_patient->patient->telephone }}
+                                                    {{ $dossier_patient->patient->telephone }}
                                                 </td>
                                             </tr>
                                             <tr>
@@ -231,7 +232,7 @@
                                                     CIN/Numéro d'état civil:
                                                 </td>
                                                 <td>
-                                                    {{$dossier_patient->patient->cin }}
+                                                    {{ $dossier_patient->patient->cin }}
 
                                                 </td>
                                             </tr>
@@ -240,7 +241,7 @@
                                                     Adresse:
                                                 </td>
                                                 <td>
-                                                    {{$dossier_patient->patient->adresse }}
+                                                    {{ $dossier_patient->patient->adresse }}
                                                 </td>
                                             </tr>
                                             <tr>
@@ -249,31 +250,34 @@
                                                 </td>
                                                 <td>
 
-                                                    {{$dossier_patient->date_enregsitrement }}
+                                                    {{ $dossier_patient->date_enregsitrement }}
                                                 </td>
                                             </tr>
 
-                                                <td>
-                                                    Remarques:
-                                                </td>
-                                                <td>
-                                                    ??
-                                                </td>
+                                            <td>
+                                                Remarques:
+                                            </td>
+                                            <td>
+                                                ??
+                                            </td>
                                             </tr>
 
                                         </tbody>
                                     </table>
                                 </div>
                             </div>
+                            <input type="hidden" value="{{ request()->dossier_patients }} ">
                             <div class="ml-4 mb-3">
-                                <a href="{{route('consultations.rendezVous',request()->model)}} " class="btn btn-primary">Previous</a>
-                                <button class="btn btn-primary">Next</button>
+                                <a href="{{ route('consultations.rendezVous', request()->model) }} "
+                                    class="btn btn-primary">Previous</a>
+                                <a href="{{ route('consultations.create', request()->model) }}?dossier_patients={{ request()->dossier_patients }}"
+                                    class="btn btn-primary">Next</a>
                             </div>
                         </div>
 
+                    </div>
                 </div>
             </div>
-        </div>
 
             <!-- /.card -->
 

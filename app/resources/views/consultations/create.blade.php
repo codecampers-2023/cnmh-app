@@ -30,8 +30,9 @@
             </div>
 
             <div class="card-footer">
-                {!! Form::submit('Save', ['class' => 'btn btn-primary']) !!}
-                <a href="{{ route('consultations.index',$title) }}" class="btn btn-default"> @lang('crud.cancel') </a>
+                <a href="{{ route('consultations.patient', request()->model) }}?dossier_patients={{request()->dossier_patients}} "
+                    class="btn btn-primary">Previous</a>
+                {!! Form::submit(__('crud.save'), ['class' => 'btn btn-primary']) !!}
             </div>
 
             {!! Form::close() !!}

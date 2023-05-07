@@ -8,6 +8,7 @@ use App\Http\Controllers\AppBaseController;
 use App\Models\Consultation;
 use App\Models\DossierPatient;
 use App\Models\DossierPatientConsultation;
+use App\Models\RendezVous;
 use App\Repositories\ConsultationRepository;
 use Illuminate\Http\Request;
 use Flash;
@@ -62,7 +63,20 @@ class ConsultationController extends AppBaseController
         $input = $request->all();
         $Model = "App\\Models\\" . ucfirst($model);
         $callModel = new $Model;
-        $callModel::create($input);
+        $consultation= $callModel::create($input);
+        // $consultation= $callModel::where('bilan',$input["bilan"])->get();
+
+        DossierPatientConsultation::create([
+            'dossier_patient_id'=>$input["dossier_patients"],
+            'consultation_id'=>$consultation->id,
+        ]);
+
+        // RendezVous::create([
+        //     'date_rendez_vous'=> $input['date_consultation'],
+        //     'consultation_id'=> $consultation->id,
+        //     'etat'=>"test"
+        // ]);
+
         // $consultation = $this->consultationRepository->create($input);
 
         // Flash::success(__('messages.saved', ['model' => __('models/consultations.singular')]));
@@ -147,7 +161,7 @@ class ConsultationController extends AppBaseController
 
     public function Ajouter_RendezVous()
     {
-        $dossier_patients = DossierPatient::select('*')->paginate(2);
+        $dossier_patients = DossierPatient::select('*')->paginate();
         return view('consultations.rendezVous', compact("dossier_patients"));
     }
 
