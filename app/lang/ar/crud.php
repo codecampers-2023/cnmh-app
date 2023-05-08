@@ -22,5 +22,7 @@ return [
     'deleted_at'   => 'تاريخ الحذف',
     'are_you_sure' => 'هل أنت متأكد؟',
     'import'       => 'استيراد',
+    'next' => 'التالي',
+    'previous' => 'السابق',
 
 ];

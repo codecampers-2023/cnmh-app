@@ -8,8 +8,8 @@ return [
         'id' => 'Id',
         'name' => 'Nom',
         'description' => 'Description',
-        'created_at' => 'Created At',
-        'updated_at' => 'Updated At',
+        'created_at' => 'Créé le',
+        'updated_at' => 'Mis à jour le',
     ],
 
 

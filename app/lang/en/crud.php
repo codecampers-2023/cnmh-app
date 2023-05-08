@@ -22,5 +22,7 @@ return [
     'deleted_at'   => 'Deleted At',
     'are_you_sure' => 'Are you sure?',
     'import'       => 'Import',
+    'next'=>'Next',
+    'previous'=>'Previous',
 
 ];

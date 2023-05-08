@@ -22,4 +22,6 @@ return [
     'are_you_sure' => 'Êtes-vous sûr(e) ?',
     'addtypehandicap'=>'Ajouter un nouveau type d handicap',
     'import'       => 'Import',
+    'next'=>'Suivant',
+    'previous'=>'Précédent',
 ];
