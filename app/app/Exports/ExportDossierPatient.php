@@ -2,21 +2,53 @@
 
 namespace App\Exports;
 
-use App\Models\dossierPatient;
-use Maatwebsite\Excel\Concerns\FromCollection;
+use App\Models\DossierPatient;
+use Maatwebsite\Excel\Concerns\WithTitle;
+use Maatwebsite\Excel\Concerns\WithMapping;
 use Maatwebsite\Excel\Concerns\WithHeadings;
+use Maatwebsite\Excel\Concerns\FromCollection;
 
-class ExportDossierPatient implements FromCollection,WithHeadings
+class ExportDossierPatient implements FromCollection, WithHeadings, WithMapping,WithTitle
 {
-    /**
-    * @return \Illuminate\Support\Collection
-    */
+
+
     public function collection()
     {
-        return couvertureMedical::select("id")->get();
+        return DossierPatient::with('couvertureMedical', 'patient', 'typeHandicaps', 'dossierPatientConsultations', 'dossierPatientServices', 'orientationExternes')->get();
     }
+
     public function headings(): array
     {
-        return [ "Id"];
+        return [
+            'Num dossier',
+            'Patient',
+            'Couverture medicale',
+            'Type Handicap',
+            // 'Consultations',
+            // 'Services',
+            // 'Orientation Externes',
+            'Etat',
+            'Date enregistrement',
+
+        ];
+    }
+
+    public function map($dossierpatient): array
+    {
+        // implode concatenates the nom values into a comma-separated string.
+        $typeHandicaps = $dossierpatient->typeHandicaps->pluck('nom')->implode(', ');
+
+        return [
+            $dossierpatient->numero_dossier,
+            $dossierpatient->patient->nom,
+            $dossierpatient->couvertureMedical->nom,
+            $typeHandicaps,
+            $dossierpatient->etat,
+            $dossierpatient->date_enregsitrement,
+        ];
+    }
+    public function title(): string
+    {
+        return 'Prestation';
     }
 }

@@ -1,12 +1,11 @@
 <?php
 
 return [
-    'singular' => 'Patient',
-    'plural' => 'Patients',
+    'singular' => 'Entretien social',
     'fields' => [
         'id' => 'Id',
-        'tuteur_id' => 'Parent',
-        'niveau_scolaire_id' => 'Niveau Scolaire ',
+        'nummero_dossier' => 'Numero Dossier',
+        'niveau_scolaire_id' => 'Niveau Scolaire',
         'nom' => 'Nom',
         'prenom' => 'Prenom',
         'telephone' => 'Telephone',
@@ -15,7 +14,7 @@ return [
         'image' => 'Image',
         'adresse' => 'Adresse',
         'remarques' => 'Remarques',
-        'created_at' => 'Created At',
-        'updated_at' => 'Updated At',
+        'created_at' => 'Créé le',
+        'updated_at' => 'Mis à jour le',
     ],
 ];

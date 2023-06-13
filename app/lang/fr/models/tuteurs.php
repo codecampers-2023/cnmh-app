@@ -1,19 +1,18 @@
 <?php
 
 return [
-    'singular' => 'Patient',
-    'plural' => 'Patients',
+    'singular' => 'Tuteur',
+    'plural' => 'Tuteurs',
     'fields' => [
         'id' => 'Id',
-        'tuteur_id' => 'Tuteur',
-        'niveau_scolaire_id' => 'Niveau Scolaire',
+        'etat_civil_id' => 'Etat Civil',
         'nom' => 'Nom',
         'prenom' => 'Prenom',
+        'sexe' => 'Sexe',
         'telephone' => 'Telephone',
-        'cin' => 'Cin',
         'email' => 'Email',
-        'image' => 'Image',
         'adresse' => 'Adresse',
+        'cin' => 'Cin',
         'remarques' => 'Remarques',
         'created_at' => 'Créé le',
         'updated_at' => 'Mis à jour le',
