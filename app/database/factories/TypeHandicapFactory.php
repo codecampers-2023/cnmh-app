@@ -22,11 +22,11 @@ class TypeHandicapFactory extends Factory
      */
     public function definition()
     {
-        
+
         return [
             // 'nom' => $this->faker->text($this->faker->numberBetween(5, 255)),
             'nom' => $this->faker->name(),
-            'description' => $this->faker->text($this->faker->numberBetween(5, 255)),
+            'description' => $this->faker->text($this->faker->numberBetween(5, 191)),
             'created_at' => $this->faker->date('Y-m-d H:i:s'),
             'updated_at' => $this->faker->date('Y-m-d H:i:s')
         ];

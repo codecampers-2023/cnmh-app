@@ -18,7 +18,8 @@ return new class extends Migration
             $table->dateTime('date_consultation');
             $table->text('observation')->nullable();
             $table->text('diagnostic')->nullable();
-            $table->text('bilan')->nullable();        
+            $table->text('bilan')->nullable();
+            $table->string('type')->nullable();
             $table->timestamps();
         });
     }

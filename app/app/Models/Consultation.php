@@ -13,6 +13,7 @@ class Consultation extends Model
         'date_consultation',
         'observation',
         'diagnostic',
+        'type',
         'bilan'
     ];
 
@@ -21,13 +22,15 @@ class Consultation extends Model
         'date_consultation' => 'datetime',
         'observation' => 'string',
         'diagnostic' => 'string',
-        'bilan' => 'string'
+        'bilan' => 'string',
+        'type' => 'string'
     ];
 
     public static array $rules = [
         'date_enregistrement' => 'required',
         'date_consultation' => 'required',
         'observation' => 'nullable|string|max:65535',
+        'type' => 'nullable|string|max:65535',
         'diagnostic' => 'nullable|string|max:65535',
         'bilan' => 'nullable|string|max:65535',
         'created_at' => 'nullable',
@@ -52,5 +55,20 @@ class Consultation extends Model
     public function typeHandicapConsultations(): \Illuminate\Database\Eloquent\Relations\HasMany
     {
         return $this->hasMany(\App\Models\TypeHandicapConsultation::class, 'consultation_id');
+    }
+
+    public function setTypeAttribute($value)
+    {
+        if ($value == 'dentiste') {
+            $this->attributes['type'] = 'dentiste';
+        } elseif ($value == 'medecinGeneral') {
+            $this->attributes['type'] = 'medecinGeneral';
+        } else {
+            $this->attributes['type'] = null;
+        }
+    }
+
+    public function dentiste(){
+        $this::where('type','dentiste');
     }
 }

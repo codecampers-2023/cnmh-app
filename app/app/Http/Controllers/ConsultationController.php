@@ -5,6 +5,10 @@ namespace App\Http\Controllers;
 use App\Http\Requests\CreateConsultationRequest;
 use App\Http\Requests\UpdateConsultationRequest;
 use App\Http\Controllers\AppBaseController;
+use App\Models\Consultation;
+use App\Models\DossierPatient;
+use App\Models\DossierPatientConsultation;
+use App\Models\RendezVous;
 use App\Repositories\ConsultationRepository;
 use Illuminate\Http\Request;
 use Flash;
@@ -22,57 +26,79 @@ class ConsultationController extends AppBaseController
     /**
      * Display a listing of the Consultation.
      */
-    public function index(Request $request)
+    public function index(Request $request, $modelName)
     {
-        
+        $title = $modelName;
+        // $model = "App\\Models\\".ucfirst($modelName);
         $query = $request->input('query');
-        $consultations = $this->consultationRepository->paginate($query);
-       
+        $consultations = DossierPatientConsultation::join('dossier_patients', 'dossier_patient_consultation.dossier_patient_id', '=', 'dossier_patients.id')
+            ->join('consultations', 'dossier_patient_consultation.consultation_id', '=', 'consultations.id')
+            ->join('patients', 'dossier_patients.patient_id', '=', 'patients.id')
+            ->where('consultations.type', $modelName)
+            ->select('*')
+            ->paginate();
+        //  $consultations = $this->consultationRepository->where($model,'type',$modelName)->paginate();
         if ($request->ajax()) {
             return view('consultations.table')
                 ->with('consultations', $consultations);
         }
 
-        return view('consultations.index')
-            ->with('consultations', $consultations);
+        return view('consultations.index', compact('consultations', 'title'));
     }
 
     /**
      * Show the form for creating a new Consultation.
      */
-    public function create()
+    public function create($model)
     {
-        return view('consultations.create');
+        $title = $model;
+        return view('consultations.create', compact('title'));
     }
 
     /**
      * Store a newly created Consultation in storage.
      */
-    public function store(CreateConsultationRequest $request)
+    public function store(CreateConsultationRequest $request, $model)
     {
         $input = $request->all();
+        $Model = "App\\Models\\" . ucfirst($model);
+        $callModel = new $Model;
+        $consultation= $callModel::create($input);
+        // $consultation= $callModel::where('bilan',$input["bilan"])->get();
 
-        $consultation = $this->consultationRepository->create($input);
+        DossierPatientConsultation::create([
+            'dossier_patient_id'=>$input["dossier_patients"],
+            'consultation_id'=>$consultation->id,
+        ]);
 
-        Flash::success(__('messages.saved', ['model' => __('models/consultations.singular')]));
+        // RendezVous::create([
+        //     'date_rendez_vous'=> $input['date_consultation'],
+        //     'consultation_id'=> $consultation->id,
+        //     'etat'=>"test"
+        // ]);
 
-        return redirect(route('consultations.index'));
+        // $consultation = $this->consultationRepository->create($input);
+
+        // Flash::success(__('messages.saved', ['model' => __('models/consultations.singular')]));
+
+        return redirect(route('consultations.index', $model));
     }
 
     /**
      * Display the specified Consultation.
      */
-    public function show($id)
+    public function show($model, $id)
     {
+        $title = $model;
         $consultation = $this->consultationRepository->find($id);
 
         if (empty($consultation)) {
-            Flash::error(__('models/consultations.singular').' '.__('messages.not_found'));
+            Flash::error(__('models/consultations.singular') . ' ' . __('messages.not_found'));
 
-            return redirect(route('consultations.index'));
+            return redirect(route('consultations.index', $title));
         }
 
-        return view('consultations.show')->with('consultation', $consultation);
+        return view('consultations.show', compact("consultation", "title"));
     }
 
     /**
@@ -83,7 +109,7 @@ class ConsultationController extends AppBaseController
         $consultation = $this->consultationRepository->find($id);
 
         if (empty($consultation)) {
-            Flash::error(__('models/consultations.singular').' '.__('messages.not_found'));
+            Flash::error(__('models/consultations.singular') . ' ' . __('messages.not_found'));
 
             return redirect(route('consultations.index'));
         }
@@ -99,7 +125,7 @@ class ConsultationController extends AppBaseController
         $consultation = $this->consultationRepository->find($id);
 
         if (empty($consultation)) {
-            Flash::error(__('models/consultations.singular').' '.__('messages.not_found'));
+            Flash::error(__('models/consultations.singular') . ' ' . __('messages.not_found'));
 
             return redirect(route('consultations.index'));
         }
@@ -121,7 +147,7 @@ class ConsultationController extends AppBaseController
         $consultation = $this->consultationRepository->find($id);
 
         if (empty($consultation)) {
-            Flash::error(__('models/consultations.singular').' '.__('messages.not_found'));
+            Flash::error(__('models/consultations.singular') . ' ' . __('messages.not_found'));
 
             return redirect(route('consultations.index'));
         }
@@ -130,6 +156,18 @@ class ConsultationController extends AppBaseController
 
         Flash::success(__('messages.deleted', ['model' => __('models/consultations.singular')]));
 
-        return redirect(route('consultations.index'));
+        return redirect()->back();
+    }
+
+    public function Ajouter_RendezVous()
+    {
+        $dossier_patients = DossierPatient::select('*')->paginate();
+        return view('consultations.rendezVous', compact("dossier_patients"));
+    }
+
+    public function patient(Request $request)
+    {
+        $dossier_patient = DossierPatient::find($request->dossier_patients);
+        return view('consultations.patient',compact("dossier_patient"));
     }
 }

@@ -6,11 +6,11 @@
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                    <h1>@lang('models/consultations.plural')</h1>
+                    <h1>@lang('models/consultations.plural') {{$title}}</h1>
                 </div>
                 <div class="col-sm-6">
                     <a class="btn btn-primary float-right"
-                       href="{{ route('consultations.create') }}">
+                       href="{{ route('consultations.rendezVous',$title)}}">
                          @lang('crud.add_new') Consultation
                     </a>
                 </div>
@@ -48,14 +48,13 @@
     </div>
 
 @endsection
-
 @push('page_scripts')
     <script>
         const tableContainer = $('#table-container')
         var searchQuery = ''
 
         const search = (query = '', page = 1) => {
-            $.ajax('{{ route('consultations.index') }}', {
+            $.ajax('{{ route('consultations.index',$title) }}', {
                 data: {
                     query: query,
                     page: page

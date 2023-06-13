@@ -38,7 +38,7 @@ class AppMenuSeeder extends Seeder
             [
                 'nom' => __('Consultations'),
                 'icon' => '<i class="fa-solid fa-hospital-user"></i>',
-                'url' => 'consultations.index',
+                'url' => 'consultations/dentiste',
             ],
             [
                 'nom' => __('Rendez-vous'),

@@ -35,10 +35,11 @@ class DatabaseSeeder extends Seeder
             ConsultationsTableSeeder::class,
             RendezVousesTableSeeder::class,
             DossierPatientsTableSeeder::class,
+            DossierPatientConsultationTableSeeder::class,
             ProjectsTableSeeder::class,
             ServicesTableSeeder::class,
-            OrientationExternesTableSeeder::class,
             ReclamationsTableSeeder::class,
+            // OrientationExternesTableSeeder::class,
             // MembersTableSeeder::class,
         ]);
 
