@@ -174,7 +174,14 @@ class ConsultationController extends AppBaseController
 
     public function Ajouter_RendezVous()
     {
-        $dossier_patients = DossierPatient::select('*')->paginate();
+        $dossier_patients = DossierPatientConsultation::join('dossier_patients', 'dossier_patient_consultation.dossier_patient_id', '=', 'dossier_patients.id')
+        ->join('consultations', 'dossier_patient_consultation.consultation_id', '=', 'consultations.id')
+        ->join('patients', 'dossier_patients.patient_id', '=', 'patients.id')
+        ->where("consultations.etat","enRendezVous")
+        ->select('*')
+        ->paginate();
+
+
         return view('consultations.rendezVous', compact("dossier_patients"));
     }
 

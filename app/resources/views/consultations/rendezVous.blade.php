@@ -209,9 +209,9 @@
 
                                                     <td>{{ $dossier_patient->id }}</td>
                                                     <td>{{ $dossier_patient->numero_dossier }}</td>
-                                                    <td>{{ $dossier_patient->patient->nom }}</td>
-                                                    <td>{{ $dossier_patient->patient->prenom }}</td>
-                                                    <td>{{ $dossier_patient->patient->telephone }}</td>
+                                                    <td>{{ $dossier_patient->nom }}</td>
+                                                    <td>{{ $dossier_patient->prenom }}</td>
+                                                    <td>{{ $dossier_patient->telephone }}</td>
                                                 </tr>
                                             @endforeach
                                         </tbody>
