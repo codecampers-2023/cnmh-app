@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Models\TypeHandicap;
 use Illuminate\Database\Eloquent\Model;
  use Illuminate\Database\Eloquent\Factories\HasFactory;
 class DossierPatient extends Model
@@ -53,9 +54,13 @@ class DossierPatient extends Model
         return $this->belongsToMany(\App\Models\Service::class, 'dossier_patient_service');
     }
 
-    public function dossierPatientTypeHandicaps(): \Illuminate\Database\Eloquent\Relations\HasMany
+    // public function dossierPatientTypeHandicaps(): \Illuminate\Database\Eloquent\Relations\HasMany
+    // {
+    //     return $this->hasMany(\App\Models\DossierPatient_typeHandycape::class, 'dossier_patient_id');
+    // }
+    public function typeHandicaps()
     {
-        return $this->hasMany(\App\Models\DossierPatientTypeHandicap::class, 'dossier_patient_id');
+        return $this->belongsToMany(TypeHandicap::class, 'dossier_patient_type_handicap');
     }
 
     public function orientationExternes(): \Illuminate\Database\Eloquent\Relations\HasMany

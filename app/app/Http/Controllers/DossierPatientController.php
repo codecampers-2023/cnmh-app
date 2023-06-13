@@ -4,21 +4,22 @@ namespace App\Http\Controllers;
 
 use Flash;
 use App\Models\Patient;
+use App\Models\Service;
+use App\Models\RendezVous;
+use App\Models\Consultation;
 use App\Models\TypeHandicap;
 use Illuminate\Http\Request;
 use App\Models\DossierPatient;
 use App\Models\CouvertureMedical;
+use Maatwebsite\Excel\Facades\Excel;
+use App\Exports\ExportDossierPatient;
 use App\Repositories\TuteurRepository;
 use App\Repositories\PatientRepository;
 use App\Http\Controllers\AppBaseController;
+use App\Models\DossierPatient_typeHandycape;
 use App\Repositories\DossierPatientRepository;
 use App\Http\Requests\CreateDossierPatientRequest;
 use App\Http\Requests\UpdateDossierPatientRequest;
-use App\Models\DossierPatient_typeHandycape;
-use App\Models\Consultation;
-use App\Models\DossierPatient;
-use App\Models\RendezVous;
-use App\Models\Service;
 
 class DossierPatientController extends AppBaseController
 {
@@ -117,7 +118,7 @@ class DossierPatientController extends AppBaseController
         // foreach($consultation as $value){
         //     $R=RendezVous::where('consultation_id',$value->id)->get();
         // }
-        
+
         if (empty($dossierPatient)) {
             Flash::error(__('models/dossierPatients.singular') . ' ' . __('messages.not_found'));
 
@@ -206,10 +207,8 @@ class DossierPatientController extends AppBaseController
         $type_handicap = TypeHandicap::all();
         return view('dossier_patients.entretien', compact('type_handicap', 'couverture_medical'));
     }
-    // public function storeEntetien(Request $request){
-    //   $entertien= $request->input();
-
-
-
-    // }
+    public function export()
+    {
+    return Excel::download(new ExportDossierPatient, 'dossierpatients.xlsx');
+    }
 }
