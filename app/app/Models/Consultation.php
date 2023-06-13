@@ -14,7 +14,8 @@ class Consultation extends Model
         'observation',
         'diagnostic',
         'type',
-        'bilan'
+        'bilan',
+        "etat"
     ];
 
     protected $casts = [
@@ -24,6 +25,7 @@ class Consultation extends Model
         'diagnostic' => 'string',
         'bilan' => 'string',
         'type' => 'string'
+        
     ];
 
     public static array $rules = [

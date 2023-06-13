@@ -18,7 +18,7 @@
                     <td>{{ $rendezVous->etat }}</td>
                     <td>{{ $rendezVous->remarques }}</td>
                     <td  style="width: 120px">
-                        {!! Form::open(['route' => ['rendezVouses.destroy', $rendezVous->id], 'method' => 'delete']) !!}
+                        {!! Form::open(['route' => ['rendez-vouses.destroy', $rendezVous->id], 'method' => 'delete']) !!}
                         <div class='btn-group'>
                             <a href="{{ route('rendez-vouses.show', [$rendezVous->id]) }}"
                                class='btn btn-default btn-sm'>
