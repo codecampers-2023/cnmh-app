@@ -16,7 +16,6 @@ use App\Http\Requests\CreateDossierPatientRequest;
 use App\Http\Requests\UpdateDossierPatientRequest;
 use App\Models\DossierPatient_typeHandycape;
 use App\Models\Consultation;
-use App\Models\DossierPatient;
 use App\Models\RendezVous;
 use App\Models\Service;
 
@@ -117,7 +116,7 @@ class DossierPatientController extends AppBaseController
         // foreach($consultation as $value){
         //     $R=RendezVous::where('consultation_id',$value->id)->get();
         // }
-        
+
         if (empty($dossierPatient)) {
             Flash::error(__('models/dossierPatients.singular') . ' ' . __('messages.not_found'));
 
