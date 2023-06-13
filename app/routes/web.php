@@ -1,6 +1,6 @@
 <?php
 
-
+use App\Http\Controllers\ConsultationController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\EmployeController;
 use App\Http\Controllers\ServiceController;
@@ -38,12 +38,10 @@ Route::resource('couvertureMedicals', App\Http\Controllers\CouvertureMedicalCont
 Route::get('/export_couvertureMedicals',[CouvertureMedicalController::class,'export'])->name('couvertureMedicals.export');
 Route::post('/import_couvertureMedicals',[CouvertureMedicalController::class,'import'])->name('couvertureMedicals.import');
 Route::resource('typeHandicaps', App\Http\Controllers\TypeHandicapController::class);
-Route::resource('typeHandicaps', App\Http\Controllers\TypeHandicapController::class);
 Route::resource('services', App\Http\Controllers\ServiceController::class);
 Route::get('/export_service',[ServiceController::class,'export'])->name('services.export');
 Route::post('/import_service',[ServiceController::class,'import'])->name('services.import');
 Route::resource('niveauScolaires', App\Http\Controllers\NiveauScolaireController::class);
-Route::resource('etatCivils', EtatCivilController::class);
 
 //employes routes
 Route::resource('employes', App\Http\Controllers\EmployeController::class);
@@ -55,7 +53,23 @@ Route::resource('fonctions', App\Http\Controllers\FonctionController::class);
 Route::resource('patients', App\Http\Controllers\PatientController::class);
 Route::resource('dossier-patients', App\Http\Controllers\DossierPatientController::class);
 Route::resource('orientation-externes', App\Http\Controllers\OrientationExterneController::class);
-Route::resource('consultations', App\Http\Controllers\ConsultationController::class);
+
+//consultation
+Route::get('/consultations/{model}', [ConsultationController::class, 'index'])->middleware(['ModelExists'])->name('consultations.index');
+Route::get('/consultations/create/{model}',[ConsultationController::class,'create'])->middleware(['ModelExists'])->name('consultations.create');
+Route::post('/consultations/store/{model}',[ConsultationController::class,'store'])->middleware(['ModelExists'])->name('consultations.store');
+Route::delete('/consultations/{id}',[ConsultationController::class,'destroy'])->name('consultations.destroy');
+Route::get('/consultations/show/{model}/{id}',[ConsultationController::class,'show'])->middleware(['ModelExists'])->name('consultations.show');
+Route::get('/consultations/edit',[ConsultationController::class,'edit'])->name('consultations.edit');
+Route::post('/consultations/update',[ConsultationController::class,'update'])->name('consultations.update');
+
+Route::get('/consultations/rendezVous/{model}', [ConsultationController::class, 'Ajouter_RendezVous'])->middleware(['ModelExists'])->name('consultations.rendezVous');
+Route::get('/consultations/patient/{model}', [ConsultationController::class, 'patient'])->middleware(['ModelExists'])->name('consultations.patient');
+
+
+
+
+Route::resource('etatCivils', EtatCivilController::class);
 Route::resource('rendez-vouses', App\Http\Controllers\RendezVousController::class);
 
 Route::prefix('/root')->group(function() {

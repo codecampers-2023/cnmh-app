@@ -3,26 +3,26 @@
         <table class="table table-striped" id="consultations-table">
             <thead>
             <tr>
+                <th>Nom</th>
+                <th>Prenom</th>
+                <th>Telephone</th>
                 <th>Date Enregistrement</th>
                 <th>Date Consultation</th>
-                <th>Observation</th>
-                <th>Diagnostic</th>
-                <th>Bilan</th>
                 <th colspan="3">Action</th>
             </tr>
             </thead>
             <tbody>
             @foreach($consultations as $consultation)
                 <tr>
+                    <td>{{ $consultation->nom }}</td>
+                    <td>{{ $consultation->prenom }}</td>
+                    <td>{{ $consultation->telephone }}</td>
                     <td>{{ $consultation->date_enregistrement }}</td>
                     <td>{{ $consultation->date_consultation }}</td>
-                    <td>{{ $consultation->observation }}</td>
-                    <td>{{ $consultation->diagnostic }}</td>
-                    <td>{{ $consultation->bilan }}</td>
                     <td  style="width: 120px">
                         {!! Form::open(['route' => ['consultations.destroy', $consultation->id], 'method' => 'delete']) !!}
                         <div class='btn-group'>
-                            <a href="{{ route('consultations.show', [$consultation->id]) }}"
+                            <a href="{{ route('consultations.show', [$title,$consultation->id]) }}"
                                class='btn btn-default btn-sm'>
                                 <i class="far fa-eye"></i>
                             </a>

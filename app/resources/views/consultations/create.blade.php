@@ -6,7 +6,7 @@
             <div class="row mb-2">
                 <div class="col-sm-12">
                     <h1>
-                    @lang('crud.create') @lang('models/consultations.singular')
+                    @lang('crud.create') @lang('models/consultations.singular') {{$title}}
                     </h1>
                 </div>
             </div>
@@ -19,7 +19,7 @@
 
         <div class="card">
 
-            {!! Form::open(['route' => 'consultations.store']) !!}
+            {!! Form::open(['route' => ['consultations.store',$title]]) !!}
 
             <div class="card-body">
 
@@ -30,8 +30,9 @@
             </div>
 
             <div class="card-footer">
-                {!! Form::submit('Save', ['class' => 'btn btn-primary']) !!}
-                <a href="{{ route('consultations.index') }}" class="btn btn-default"> @lang('crud.cancel') </a>
+                <a href="{{ route('consultations.patient', request()->model) }}?dossier_patients={{request()->dossier_patients}} "
+                    class="btn btn-primary">Previous</a>
+                {!! Form::submit(__('crud.save'), ['class' => 'btn btn-primary']) !!}
             </div>
 
             {!! Form::close() !!}

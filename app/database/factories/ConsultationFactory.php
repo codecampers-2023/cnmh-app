@@ -22,13 +22,14 @@ class ConsultationFactory extends Factory
      */
     public function definition()
     {
-        
+
         return [
             'date_enregistrement' => $this->faker->date('Y-m-d H:i:s'),
             'date_consultation' => $this->faker->date('Y-m-d H:i:s'),
-            'observation' => $this->faker->text($this->faker->numberBetween(5, 65535)),
-            'diagnostic' => $this->faker->text($this->faker->numberBetween(5, 65535)),
-            'bilan' => $this->faker->text($this->faker->numberBetween(5, 65535)),
+            'observation' => $this->faker->text($this->faker->numberBetween(5, 10)),
+            'diagnostic' => $this->faker->text($this->faker->numberBetween(5, 10)),
+            'bilan' => $this->faker->text($this->faker->numberBetween(5, 10)),
+            'type'=> $this->faker->randomElement(['dentiste']),
             'created_at' => $this->faker->date('Y-m-d H:i:s'),
             'updated_at' => $this->faker->date('Y-m-d H:i:s')
         ];

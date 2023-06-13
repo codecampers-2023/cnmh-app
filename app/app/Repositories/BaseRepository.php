@@ -171,4 +171,10 @@ abstract class BaseRepository
 
         return $model->delete();
     }
+
+    public function where($model,$key,$row){
+       $model=  new $model;
+       $query= $model->newQuery();
+       return $query->where($key,$row);
+    }
 }

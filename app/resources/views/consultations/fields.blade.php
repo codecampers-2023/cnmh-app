@@ -1,7 +1,7 @@
 <!-- Date Enregistrement Field -->
 <div class="form-group col-sm-6">
     {!! Form::label('date_enregistrement', __('models/consultations.fields.date_enregistrement').':') !!}
-    {!! Form::text('date_enregistrement', null, ['class' => 'form-control','id'=>'date_enregistrement']) !!}
+    {!! Form::date('date_enregistrement', null, ['class' => 'form-control','id'=>'date_enregistrement']) !!}
 </div>
 
 @push('page_scripts')
@@ -13,7 +13,7 @@
 <!-- Date Consultation Field -->
 <div class="form-group col-sm-6">
     {!! Form::label('date_consultation', __('models/consultations.fields.date_consultation').':') !!}
-    {!! Form::text('date_consultation', null, ['class' => 'form-control','id'=>'date_consultation']) !!}
+    {!! Form::date('date_consultation', null, ['class' => 'form-control','id'=>'date_consultation']) !!}
 </div>
 
 @push('page_scripts')
@@ -39,3 +39,6 @@
     {!! Form::label('bilan', __('models/consultations.fields.bilan').':') !!}
     {!! Form::textarea('bilan', null, ['class' => 'form-control', 'maxlength' => 65535, 'maxlength' => 65535]) !!}
 </div>
+
+    {!! Form::hidden('dossier_patients',request()->dossier_patients , ['class' => 'form-control', 'maxlength' => 65535, 'maxlength' => 65535]) !!}
+

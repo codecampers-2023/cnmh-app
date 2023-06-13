@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Factories\Factory;
 
 use App\Models\CouvertureMedical;
 use App\Models\Patient;
+use App\Models\User;
 
 class DossierPatientFactory extends Factory
 {
@@ -27,6 +28,8 @@ class DossierPatientFactory extends Factory
 
         return [
             'patient_id' => $this->faker->randomElement(Patient::pluck("id")),
+            'patient_id' => $this->faker->randomElement(Patient::pluck("id")),
+            'user_id' => $this->faker->randomElement(User::pluck("id")),
             'couverture_medical_id' => $this->faker->randomElement(CouvertureMedical::pluck("id")),
             'numero_dossier' => $this->faker->numberBetween(5, 255),
             'etat' => $this->faker->word,

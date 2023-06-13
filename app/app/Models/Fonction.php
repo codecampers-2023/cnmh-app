@@ -8,10 +8,9 @@ class Fonction extends BaseModel
 {
     use HasFactory;    public $table = 'fonctions';
 
-    function __construct()
-    {
-        $this->referance_culomn = "nom";
-    }
+
+        // $this->referance_culomn = "nom";
+
 
     public $fillable = [
         'nom',
