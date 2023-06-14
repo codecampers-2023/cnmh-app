@@ -20,6 +20,7 @@ use App\Models\DossierPatient_typeHandycape;
 use App\Repositories\DossierPatientRepository;
 use App\Http\Requests\CreateDossierPatientRequest;
 use App\Http\Requests\UpdateDossierPatientRequest;
+use App\Models\DossierPatientConsultation;
 
 class DossierPatientController extends AppBaseController
 {
@@ -71,6 +72,17 @@ class DossierPatientController extends AppBaseController
         $DossierPatient_typeHandycape->type_handicap_id = $request->type_handicap_id;
         $DossierPatient_typeHandycape->dossier_patient_id  = $dossierPatient->id;
         $DossierPatient_typeHandycape->save();
+
+        $consultation = new Consultation();
+        $consultation->date_enregistrement=$request->date_enregsitrement;
+        $consultation->etat="enAttente";
+        $consultation->save();
+
+         $DossierPatient_consultation =  new DossierPatientConsultation;
+
+        $DossierPatient_consultation->dossier_patient_id = $dossierPatient->id;
+        $DossierPatient_consultation->consultation_id  = $consultation->id;
+        $DossierPatient_consultation->save();
 
 
 

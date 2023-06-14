@@ -15,11 +15,12 @@ return new class extends Migration
             $table->id();
             // etat
             $table->dateTime('date_enregistrement');
-            $table->dateTime('date_consultation');
+            $table->dateTime('date_consultation')->nullable();
             $table->text('observation')->nullable();
             $table->text('diagnostic')->nullable();
             $table->text('bilan')->nullable();
             $table->string('type')->nullable();
+            $table->string('etat')->nullable();
             $table->timestamps();
         });
     }

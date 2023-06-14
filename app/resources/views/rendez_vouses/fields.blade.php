@@ -7,7 +7,7 @@
 <!-- Date Rendez Vous Field -->
 <div class="form-group col-sm-6">
     {!! Form::label('date_rendez_vous', __('models/rendezVouses.fields.date_rendez_vous').':') !!}
-    {!! Form::text('date_rendez_vous', null, ['class' => 'form-control','id'=>'date_rendez_vous']) !!}
+    {!! Form::datetime('date_rendez_vous', null, ['class' => 'form-control','id'=>'date_rendez_vous']) !!}
 </div>
 
 @push('page_scripts')
