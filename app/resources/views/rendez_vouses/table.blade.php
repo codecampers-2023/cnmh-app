@@ -18,13 +18,13 @@
                     <td>{{ $rendezVous->etat }}</td>
                     <td>{{ $rendezVous->remarques }}</td>
                     <td  style="width: 120px">
-                        {!! Form::open(['route' => ['rendez-vouses.destroy', $rendezVous->id], 'method' => 'delete']) !!}
+                        {!! Form::open(['route' => ['rendez-vous.destroy', $rendezVous->id], 'method' => 'delete']) !!}
                         <div class='btn-group'>
-                            <a href="{{ route('rendez-vouses.show', [$rendezVous->id]) }}"
+                            <a href="{{ route('rendez-vous.show', [$rendezVous->id]) }}"
                                class='btn btn-default btn-sm'>
                                 <i class="far fa-eye"></i>
                             </a>
-                            <a href="{{ route('rendez-vouses.edit', [$rendezVous->id]) }}"
+                            <a href="{{ route('rendez-vous.edit', [$rendezVous->id]) }}"
                                class='btn btn-default btn-sm'>
                                 <i class="far fa-edit"></i>
                             </a>

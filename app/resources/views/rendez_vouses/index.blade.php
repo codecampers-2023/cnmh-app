@@ -10,7 +10,7 @@
                 </div>
                 <div class="col-sm-6">
                     <a class="btn btn-primary float-right"
-                       href="{{ route('rendez-vouses.create') }}">
+                       href="{{ route('rendez-vous.list_dossier') }}">
                          @lang('crud.add_new') Rendez Vous
                     </a>
                 </div>
@@ -55,7 +55,7 @@
         var searchQuery = ''
 
         const search = (query = '', page = 1) => {
-            $.ajax('{{ route('rendez-vouses.index') }}', {
+            $.ajax('{{ route('rendez-vous.index') }}', {
                 data: {
                     query: query,
                     page: page
