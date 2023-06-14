@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->foreignId('patient_id')->constrained('patients');
             $table->foreignId('couverture_medical_id')->constrained('couverture_medicals');
-            $table->integer('numero_dossier');
+            $table->string('numero_dossier');
             $table->string('etat');
             $table->date('date_enregsitrement');
             $table->foreignId('user_id')->constrained('users');

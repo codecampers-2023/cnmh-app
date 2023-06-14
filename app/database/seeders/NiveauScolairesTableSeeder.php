@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\NiveauScolaire;
 use Illuminate\Database\Seeder;
 
 class NiveauScolairesTableSeeder extends Seeder
@@ -13,8 +14,41 @@ class NiveauScolairesTableSeeder extends Seeder
      */
     public function run()
     {
-        \App\Models\NiveauScolaire::factory(50)->create();
-        
+        $now = \Carbon\Carbon::now();
+
+        $niveauScholaire = NiveauScolaire::insert([
+            [
+                'nom' => 'Maternelle',
+                'description' => 'h',
+                'created_at' => $now,
+                'updated_at' => $now,
+            ],
+            [
+                'nom' => 'Ecole primaire',
+                'description' => 'h',
+                'created_at' => $now,
+                'updated_at' => $now,
+            ],
+            [
+                'nom' => 'Collége',
+                'description' => 'h',
+                'created_at' => $now,
+                'updated_at' => $now,
+            ],
+            [
+                'nom' => 'Lycéé',
+                'description' => 'h',
+                'created_at' => $now,
+                'updated_at' => $now,
+            ],
+            [
+                'nom' => 'Université',
+                'description' => 'h',
+                'created_at' => $now,
+                'updated_at' => $now,
+            ],
+        ]);
+
 
     }
 }

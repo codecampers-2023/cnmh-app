@@ -12,6 +12,6 @@ class DossierPatientConsultationTableSeeder extends Seeder
      */
     public function run(): void
     {
-        \App\Models\DossierPatientConsultation::factory(5)->create();
+        
     }
 }

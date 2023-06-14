@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\Fonction;
 use Illuminate\Database\Seeder;
 
 class FonctionsTableSeeder extends Seeder
@@ -13,6 +14,17 @@ class FonctionsTableSeeder extends Seeder
      */
     public function run()
     {
-        \App\Models\Fonction::factory(4)->create();
+        $now = \Carbon\Carbon::now();
+
+        $fonction = Fonction::insert([
+            [
+                'nom' => 'Assistanat / Secrétariat',
+                'description' => 'Description de fonction',
+                'created_at' => $now,
+                'updated_at' => $now,
+            ],
+
+        ]);
+
     }
 }

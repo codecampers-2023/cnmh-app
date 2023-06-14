@@ -13,6 +13,6 @@ class ConsultationsTableSeeder extends Seeder
      */
     public function run()
     {
-        \App\Models\Consultation::factory(5)->create();
+        
     }
 }
