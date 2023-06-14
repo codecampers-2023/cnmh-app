@@ -2,8 +2,9 @@
 
 namespace Database\Seeders;
 
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+use App\Models\User;
 use Illuminate\Database\Seeder;
+use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 
 class UserSeeder extends Seeder
 {
@@ -12,6 +13,18 @@ class UserSeeder extends Seeder
      */
     public function run(): void
     {
-        \App\Models\User::factory(8)->create();
+        $now = \Carbon\Carbon::now();
+
+        $user = User::insert([
+            [
+                'name' => 'Khawla souan',
+                'email' => 'khawla@gmail.com',
+                'password'=>'123456',
+                'created_at' => $now,
+                'updated_at' => $now,
+            ],
+
+        ]);
+
     }
 }
