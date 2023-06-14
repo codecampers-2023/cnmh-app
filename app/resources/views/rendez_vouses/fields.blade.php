@@ -1,14 +1,15 @@
 <!-- Id Consultation Field -->
-<div class="form-group col-sm-6">
-    {!! Form::label('id_consultation', __('models/rendezVouses.fields.id_consultation').':') !!}
-    {!! Form::number('id_consultation', null, ['class' => 'form-control', 'required']) !!}
-</div>
+
+
+
 
 <!-- Date Rendez Vous Field -->
 <div class="form-group col-sm-6">
     {!! Form::label('date_rendez_vous', __('models/rendezVouses.fields.date_rendez_vous').':') !!}
-    {!! Form::datetime('date_rendez_vous', null, ['class' => 'form-control','id'=>'date_rendez_vous']) !!}
+    {!! Form::date('date_rendez_vous', null, ['class' => 'form-control','id'=>'date_rendez_vous']) !!}
 </div>
+
+<input type="hidden" name="consultation_id" value="{{$consultation_id}}">
 
 @push('page_scripts')
     <script type="text/javascript">
@@ -16,11 +17,7 @@
     </script>
 @endpush
 
-<!-- Etat Field -->
-<div class="form-group col-sm-6">
-    {!! Form::label('etat', __('models/rendezVouses.fields.etat').':') !!}
-    {!! Form::text('etat', null, ['class' => 'form-control', 'required', 'maxlength' => 255, 'maxlength' => 255]) !!}
-</div>
+
 
 <!-- Remarques Field -->
 <div class="form-group col-sm-12 col-lg-12">

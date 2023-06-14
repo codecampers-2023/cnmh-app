@@ -10,6 +10,7 @@ use App\Http\Controllers\TypeHandicapController;
 use App\Http\Controllers\DossierPatientController;
 use App\Http\Controllers\NiveauScolaireController;
 use App\Http\Controllers\CouvertureMedicalController;
+use App\Http\Controllers\RendezVousController;
 
 /*
 |--------------------------------------------------------------------------
@@ -69,7 +70,14 @@ Route::get('/consultations/patient/{model}', [ConsultationController::class, 'pa
 
 
 Route::resource('etatCivils', EtatCivilController::class);
-Route::resource('rendez-vouses', App\Http\Controllers\RendezVousController::class);
+// Route::resource('rendez-vouses', App\Http\Controllers\RendezVousController::class);
+Route::get('/rendez-vous',[RendezVousController::class,'index'])->name('rendez-vous.index');
+Route::get('/rendez-vous/list_dossier',[RendezVousController::class,'list_dossier'])->name('rendez-vous.list_dossier');
+Route::post('rendez-vous/createe',[RendezVousController::class,'create'])->name('rendez-vous.create');
+Route::delete('rendez-vous/destroy/{id}',[RendezVousController::class,'destroy'])->name('rendez-vous.destroy');
+Route::get('rendez-vous/show/{id}',[RendezVousController::class,'show'])->name('rendez-vous.show');
+Route::get('rendez-vous/edit/{id}',[RendezVousController::class,'edit'])->name('rendez-vous.edit');
+Route::post('rendez-vous/store',[RendezVousController::class,'store'])->name('rendez-vous.store');
 
 Route::prefix('/root')->group(function() {
     Route::controller(RootController::class)->group(function() {

@@ -75,6 +75,7 @@ class DossierPatientController extends AppBaseController
 
         $consultation = new Consultation();
         $consultation->date_enregistrement=$request->date_enregsitrement;
+        $consultation->type="medecinGeneral";
         $consultation->etat="enAttente";
         $consultation->save();
 

@@ -29,12 +29,15 @@ class ConsultationController extends AppBaseController
     public function index(Request $request, $modelName)
     {
         $title = $modelName;
-
+        $title  = ucFirst($title);
         if($title == "Liste-attente"){
             $consultations = DossierPatientConsultation::join('dossier_patients', 'dossier_patient_consultation.dossier_patient_id', '=', 'dossier_patients.id')
             ->join('consultations', 'dossier_patient_consultation.consultation_id', '=', 'consultations.id')
             ->join('patients', 'dossier_patients.patient_id', '=', 'patients.id')
-            ->where("consultations.etat","enAttente")
+             ->where([
+                ["consultations.etat","enAttente"],
+                ["consultations.type","medecinGeneral"]
+             ])
             ->select('*')
             ->paginate();
 
@@ -180,6 +183,7 @@ class ConsultationController extends AppBaseController
         ->where("consultations.etat","enRendezVous")
         ->select('*')
         ->paginate();
+
 
 
         return view('consultations.rendezVous', compact("dossier_patients"));

@@ -19,7 +19,7 @@
 
         <div class="card">
 
-            {!! Form::open(['route' => 'rendez-vouses.store']) !!}
+            {!! Form::open(['route' => 'rendez-vous.store', 'method' => 'post']) !!}
 
             <div class="card-body">
 
@@ -31,7 +31,7 @@
 
             <div class="card-footer">
                 {!! Form::submit('Save', ['class' => 'btn btn-primary']) !!}
-                <a href="{{ route('rendez-vouses.index') }}" class="btn btn-default"> @lang('crud.cancel') </a>
+                <a href="{{ route('rendez-vous.index') }}" class="btn btn-default"> @lang('crud.cancel') </a>
             </div>
 
             {!! Form::close() !!}
