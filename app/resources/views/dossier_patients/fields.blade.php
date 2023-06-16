@@ -9,7 +9,7 @@ $patientId = $explodeQuery[1];
 <!-- Numero Dossier Field -->
 <div class="form-group col-sm-6">
     {!! Form::label('numero_dossier', __('models/dossierPatients.fields.numero_dossier').':') !!}
-    {!! Form::number('numero_dossier', null, ['class' => 'form-control', 'required']) !!}
+    {!! Form::text('numero_dossier', null, ['class' => 'form-control', 'required']) !!}
 </div>
 
 <!-- Fonction Field -->

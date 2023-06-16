@@ -23,6 +23,14 @@ class AppMenuSeeder extends Seeder
             'nom' => 'Service social',
             'icon' => '<i class="fa-solid fa-users"></i>',
         ]);
+        $medcineGenerale = MenuGroup::create([
+            'nom' => 'Medcine générale',
+            'icon' => '<i class="fa-solid fa-users"></i>',
+        ]);
+        $dentist = MenuGroup::create([
+            'nom' => 'Dentiste',
+            'icon' => '<i class="fa-solid fa-users"></i>',
+        ]);
 
         $parametresGroup = MenuGroup::create([
             'nom' => 'Paramètres',
@@ -33,34 +41,47 @@ class AppMenuSeeder extends Seeder
             [
                 'nom' => __('Dossier patients'),
                 'icon' => '<i class="fa-solid fa-hospital-user"></i>',
-                'url' => 'patients.index',
+                'url' => 'dossier-patients.index',
             ],
+
+            //menu service social
             [
-                'nom' => __('Consultations'),
-                'icon' => '<i class="fa-solid fa-hospital-user"></i>',
-                'url' => 'consultations/dentiste',
-            ],
-            [
-                'nom' => __('Rendez-vous'),
-                'icon' => '<i class="fa-regular fa-calendar-check"></i>',
-                'url' => 'rendez-vouses.index',
-            ],
-            [
-                'nom' => __('Statistique'),
-                'icon' => '<i class="fa-solid fa-chart-simple"></i>',
-                'url' => '#',
-                'reference' => null,
-            ],
-            [
-                'nom' => __('Orientations externes'),
-                'url' => 'orientation-externes.index',
+                'nom' => __('Dossier social'),
+                'icon' => null,
+                'url' => 'dossier-patients.index',
                 'menu_group_id' => $serviceSocialGroup->id,
             ],
             [
-                'nom' => __('Réclamations'),
-                'url' => 'reclamations.index',
+
+                'nom' => __("List d'attente"),
+                'icon' => null,
+                'url' => '/consultations/liste-attente',
                 'menu_group_id' => $serviceSocialGroup->id,
             ],
+            [
+                'nom' => __("Rendez-vous"),
+                'icon' => null,
+                'url' => 'rendez-vous.index',
+                'menu_group_id' => $serviceSocialGroup->id,
+            ],
+            // Medecin generale
+            [
+                'nom' => __("Consultation"),
+                'icon' => null,
+                'url' => '/consultations/MedecinGeneral',
+                'menu_group_id' => $medcineGenerale->id,
+            ],
+            // Dentist
+            [
+                'nom' => __("Dentiste"),
+                'icon' => null,
+                'url' => '/consultations/dentiste',
+                'menu_group_id' => $dentist->id,
+            ],
+
+
+            // parametre
+
             [
                 'nom' => __('Prestations'),
                 'icon' => null,
