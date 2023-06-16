@@ -25,5 +25,5 @@ class EtatCivil extends Model
         'updated_at' => 'nullable'
     ];
 
-    
+
 }

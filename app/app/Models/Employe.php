@@ -14,7 +14,7 @@ class Employe extends BaseModel
 
     public $fillable = [
         'nom',
-        'user_id',
+        
         'prenom',
         'email',
         'telephone',
