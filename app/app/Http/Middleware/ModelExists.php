@@ -24,6 +24,11 @@ class ModelExists
         if (is_subclass_of($model, 'App\\Models\\Consultation')) {
 
             return $next($request);
+
+        }if(ucfirst($request->model) == "Liste-attente"){
+           
+            return $next($request);
+
         } else {
             abort(404);
         }

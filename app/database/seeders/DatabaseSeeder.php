@@ -4,13 +4,14 @@ namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 
-use App\Models\Consultation;
+use App\Models\User;
+use App\Models\Tuteur;
+use App\Models\Patient;
 use App\Models\EtatCivil;
 use App\Models\MenuGroup;
-use App\Models\NiveauScolaire;
-use App\Models\Patient;
 use App\Models\RendezVous;
-use App\Models\Tuteur;
+use App\Models\Consultation;
+use App\Models\NiveauScolaire;
 use Illuminate\Database\Seeder;
 use Symfony\Component\Uid\NilUuid;
 
@@ -21,25 +22,30 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        \App\Models\User::factory(5)->create();
+
         $this->call([
             AppMenuSeeder::class,
+            UserSeeder::class,
+            EtatCivilsTableSeeder::class,
+            ServicesTableSeeder::class,
+            TuteursTableSeeder::class,
             CouvertureMedicalsTableSeeder::class,
             TypeHandicapsTableSeeder::class,
-            EtatCivilsTableSeeder::class,
             FonctionsTableSeeder::class,
-            EmployesTableSeeder::class,
             NiveauScolairesTableSeeder::class,
-            TuteursTableSeeder::class,
             PatientsTableSeeder::class,
-            ConsultationsTableSeeder::class,
-            RendezVousesTableSeeder::class,
+            EmployesTableSeeder::class,
             DossierPatientsTableSeeder::class,
-            DossierPatientConsultationTableSeeder::class,
-            ProjectsTableSeeder::class,
-            ServicesTableSeeder::class,
+            OrientationExternesTableSeeder::class,
+
+
+            // ConsultationsTableSeeder::class,
+            // RendezVousesTableSeeder::class,
+
+            // DossierPatientConsultationTableSeeder::class,
+            // ProjectsTableSeeder::class,
+
             ReclamationsTableSeeder::class,
-            // OrientationExternesTableSeeder::class,
             // MembersTableSeeder::class,
         ]);
 

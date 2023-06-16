@@ -160,19 +160,13 @@
                         <div class="md-stepper-horizontal orange">
                             <div class="md-step active done">
                                 <div class="md-step-circle"><span>1</span></div>
-                                <div class="md-step-title">Rendez-Vous</div>
+                                <div class="md-step-title">liste dossier patient</div>
                                 <div class="md-step-bar-left"></div>
                                 <div class="md-step-bar-right"></div>
                             </div>
                             <div class="md-step  done">
                                 <div class="md-step-circle"><span>2</span></div>
-                                <div class="md-step-title">Patient</div>
-                                <div class="md-step-bar-left"></div>
-                                <div class="md-step-bar-right"></div>
-                            </div>
-                            <div class="md-step ">
-                                <div class="md-step-circle"><span>3</span></div>
-                                <div class="md-step-title">Consultation</div>
+                                <div class="md-step-title">RendezVous</div>
                                 <div class="md-step-bar-left"></div>
                                 <div class="md-step-bar-right"></div>
                             </div>
@@ -182,8 +176,8 @@
 
                         <div class="card-body p-0">
                             <div class="table-responsive">
-
-                                <form action="{{ route('consultations.patient', request()->model) }}" method="GET">
+                                <form action="{{route("rendez-vous.create")}}" method="POST">
+                                        @csrf
 
                                     <table class="table table-striped" id="tuteurs-table">
                                         <thead>
@@ -202,8 +196,8 @@
                                                 <tr>
                                                     <td>
 
-                                                        <input required type="radio" value="{{ $dossier_patient->id }}"
-                                                            name="dossier_patients"
+                                                        <input required type="radio" value="{{ $dossier_patient->consultation_id }}"
+                                                            name="consultation_id"
                                                             aria-label="Radio button for following text input">
                                                     </td>
 
@@ -213,6 +207,8 @@
                                                     <td>{{ $dossier_patient->prenom }}</td>
                                                     <td>{{ $dossier_patient->telephone }}</td>
                                                 </tr>
+                                                {{-- <input type="hidden" name="consultation_id" value="{{$dossier_patient->consultation_id}}" > --}}
+
                                             @endforeach
                                         </tbody>
 
@@ -221,7 +217,7 @@
 
                             </div>
                             <div class="ml-4 mb-3">
-                                <a href="{{ route('consultations.index', request()->model) }} "
+                                <a href=" "
                                     class="btn btn-primary">Previous</a>
                                 <div name="rendezVous" value="false" class="btn btn-primary">Ajouter sans RendezVous</div>
                                 <button  class="btn btn-primary">next</button>

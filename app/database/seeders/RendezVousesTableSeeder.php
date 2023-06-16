@@ -13,6 +13,6 @@ class RendezVousesTableSeeder extends Seeder
      */
     public function run()
     {
-        \App\Models\RendezVous::factory(8)->create();
+        
     }
 }

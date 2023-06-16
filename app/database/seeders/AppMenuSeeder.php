@@ -85,6 +85,18 @@ class AppMenuSeeder extends Seeder
                 'url' => 'employes.index',
                 'menu_group_id' => $parametresGroup->id,
             ],
+            [
+                'nom' => __('NiveauScolaires'),
+                'icon' => null,
+                'url' => 'niveauScolaires.index',
+                'menu_group_id' => $parametresGroup->id,
+            ],
+            [
+                'nom' => __('EtatCivils'),
+                'icon' => null,
+                'url' => 'etatCivils.index',
+                'menu_group_id' => $parametresGroup->id,
+            ],
         ];
 
         foreach ($menu as $item) {

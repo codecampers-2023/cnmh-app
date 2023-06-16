@@ -14,20 +14,20 @@ $patientId = $explodeQuery[1];
 
 <!-- Fonction Field -->
 <div class="form-group col-sm-6">
-    {!! Form::label('type handycap', __('models/employes.fields.type_handicap') . ':') !!}
+    {!! Form::label('type handycap', __('models/dossierPatients.fields.type_handicap_id') . ':') !!}
     {{ Form::select(
         'type_handicap_id',
-        ['' => '-- select Type handycape --'] + $type_handicap->pluck('nom', 'id')->toArray(),
+        ['' => __('models/dossierPatients.fields.selecter.select_type_handicap_id')] + $type_handicap->pluck('nom', 'id')->toArray(),
         null,
-        ['class' => 'form-control', 'required'],
+        ['class' => 'form-control', 'required']
     ) }}
 </div>
 <!-- Couverture Medical Id Field -->
 <div class="form-group col-sm-6">
-    {!! Form::label('fonction', __('models/employes.fields.couverture_medical') . ':') !!}
+    {!! Form::label('fonction', __('models/dossierPatients.fields.couverture_medical_id') . ':') !!}
     {{ Form::select(
         'couverture_medical_id',
-        ['' => '-- select couverture medical --'] + $couverture_medical->pluck('nom', 'id')->toArray(),
+        ['' => __('models/dossierPatients.fields.selecter.select_couverture_medical_id')] + $couverture_medical->pluck('nom', 'id')->toArray(),
         null,
         ['class' => 'form-control', 'required'],
     ) }}

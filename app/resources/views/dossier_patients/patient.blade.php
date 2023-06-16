@@ -2,125 +2,142 @@
 
 @section('content')
     <section class="content-header">
-        {{-- <section class="content-header">
-            <div class="container-fluid">
-                <div class="row mb-2">
-                    <div class="col-sm-6">
-                        <h1>@lang('models/tuteurs.plural')</h1>
-                    </div>
-                    <div class="col-sm-6">
-                        <a class="btn btn-primary float-right"
-                           href="{{ route('patients.create') }}">
-                             @lang('crud.add_new') Patient
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </section> --}}
+
+
+        <div class="container-fluid">
+
+        </div>
     </section>
 
-    <div class="content px-3">
 
-        @include('flash::message')
+    <section class="content">
+        <div class="container-fluid ">
+            @include('flash::message')
 
-        <div class="clearfix"></div>
+            <div class="clearfix"></div>
 
-        <div class="card-header">
-            <div class="col-sm-12 d-flex justify-content-between p-0">
-                <div>
-                </div>
-                <!-- SEARCH FORM -->
-                <form class="form-inline ml-3">
-                    <div class="input-group input-group-sm">
-                        <input type="search" class="form-control form-control-lg" placeholder="Recherche">
-                        <div class="input-group-append">
-                            <button type="button" class="btn btn-lg btn-default">
-                                <i class="fa fa-search"></i>
-                            </button>
+
+            <div class="row">
+
+                <div class="col-md-12">
+                    <div class="card card-default">
+                        <div class="card-header">
+                            <h3 class="card-title"></h3>
                         </div>
-                    </div>
-                </form>
-            </div>
-        </div>
+                        @include('dossier_patients.stepper')
+                        <div class="card-header">
 
-        <div class="card" id="table-container">
-            <div class="card-body p-0">
-                <div class="table-responsive">
-                    @php
-                    $url = parse_url($_SERVER['REQUEST_URI']);
-                    // var_dump($url['query']);
-                @endphp
-                    <form action="{{route('dossier-patients.entretien',$url["query"])}}" method="get">
+                            <div class="col-sm-12 d-flex justify-content-between ">
+                                <div class="col-sm-6">
+                                    <a class="btn btn-primary " href="{{ route('patients.create') }}">
+                                        @lang('crud.add_new') {{strtolower(__('models/patients.singular'))}}
+                                    </a>
+                                </div>
 
-                        <table class="table table-striped" id="tuteurs-table">
-                        <thead>
-                            <tr>
-                                <th></th>
-                                <th>Nom</th>
-                                <th>Prenom</th>
-                                <th>Telephone</th>
-                                <th>Email</th>
-                                <th>Adresse</th>
-
-                                <th>Remarques</th>
-                                <th colspan="3">Action</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            @foreach ($patients as $patient)
-                                <tr>
-                                    <td>
-                                        <input type="radio" value="{{ $patient->id }}" name="patientRadio"
-                                            aria-label="Radio button for following text input" >
-                                    </td>
-
-                                    <td>{{ $patient->nom }}</td>
-                                    <td>{{ $patient->prenom }}</td>
-                                    <td>{{ $patient->telephone }}</td>
-                                    <td>{{ $patient->email }}</td>
-                                    <td>{{ $patient->adresse }}</td>
-                                    <td>{{ $patient->remarques }}</td>
-
-                                    <td style="width: 120px">
-
-                                        <div class='btn-group'>
-                                            <a href="{{ route('patients.show', [$patient->id]) }}"
-                                                class='btn btn-default btn-sm'>
-                                                <i class="far fa-eye"></i>
-                                            </a>
-
+                                <!-- SEARCH FORM -->
+                                <form class="form-inline ml-3">
+                                    <div class="input-group input-group-sm">
+                                        <input type="search" class="form-control form-control-lg" placeholder="@lang('crud.search')">
+                                        <div class="input-group-append">
+                                            <button type="button" class="btn btn-lg btn-default">
+                                                <i class="fa fa-search"></i>
+                                            </button>
                                         </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                        <div class="card-body p-0">
+                            <div class="table-responsive">
+                                @php
+                                    $url = parse_url($_SERVER['REQUEST_URI']);
+                                    // var_dump($url['query']);
+                                @endphp
+                                <form action="{{ route('dossier-patients.entretien', $url['query']) }}" method="get">
 
-                                    </td>
-                                </tr>
-                            @endforeach
-                        </tbody>
+                                    <table class="table table-striped" id="patient-table">
+                                        <thead>
+                                            <tr>
+                                                <th></th>
+                                                <th>@lang('models/patients.fields.image')</th>
+                                                <th>@lang('models/patients.fields.nom')</th>
+                                                <th>@lang('models/patients.fields.prenom')</th>
+                                                <th>@lang('models/patients.fields.tuteur_id')</th>
+                                                <th>@lang('models/patients.fields.email')</th>
+                                                <th>@lang('models/patients.fields.cin')</th>
 
-                    </table>
 
-                </div>
-                <div class="ml-4 mb-3">
-                    <button  class="btn btn-primary">Next</button>
+                                                {{-- <th>Cin</th>
+                                            <th>Remarques</th> --}}
+                                                <th colspan="3">@lang('crud.action')</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            @foreach ($patients as $patient)
+                                                <tr>
+                                                    <td>
+                                                        <input type="radio" value="{{ $patient->id }}" name="patientRadio"
+                                                        {{ $patient->id == request('patient_id') ? 'checked' : '' }}>
+                                                    </td>
+                                                    <td>{{ $patient->image }}</td>
+                                                    <td>{{ $patient->nom }}</td>
+                                                    <td>{{ $patient->prenom }}</td>
+                                                    <td>{{ $patient->parent->nom }}</td>
+                                                    <td>{{ $patient->email }}</td>
+                                                    <td>{{ $patient->cin }}</td>
 
-                </div>
-            </form>
 
-                <div class="card-footer clearfix">
-                    <div class="float-right">
-                        {{-- @include('adminlte-templates::common.paginate', ['records' => $patients]) --}}
+                                                    <td style="width: 120px">
+
+                                                        <div class='btn-group'>
+                                                            <a href="{{ route('patients.show', [$patient->id]) }}"
+                                                                class='btn btn-default btn-sm'>
+                                                                <i class="far fa-eye"></i>
+                                                            </a>
+
+                                                        </div>
+
+                                                    </td>
+                                                </tr>
+                                            @endforeach
+                                        </tbody>
+
+                                    </table>
+
+
+                            </div>
+                            <div class="ml-4 mb-3">
+                                <a href="{{ route('dossier-patients.parent', ['tuteur_id' => request('parentRadio')]) }}" class="btn btn-primary">@lang('crud.previous')</a>                                {{-- <a href="{{ route('dossier-patients.parent') }}" class="btn btn-primary">@lang('crud.previous')</a> --}}
+                                <button id="next-button" class="btn btn-primary">@lang('crud.next')</button>
+
+                            </div>
+                            </form>
+                            <div class="card-footer clearfix">
+                                <div class="float-right">
+                                    {{-- @include('adminlte-templates::common.paginate', ['records' => $patients]) --}}
+                                </div>
+                                <div class="float-left">
+                                    <button type="button" class="btn btn-default swalDefaultQuestion">
+                                        <i class="fas fa-download"></i> @lang('crud.export')
+                                    </button>
+                                    <button type="button" class="btn btn-default swalDefaultQuestion">
+                                        <i class="fas fa-file-import"></i> @lang('crud.import')
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- /.card-body -->
+
                     </div>
-                    <div class="float-left">
-                        <button type="button" class="btn btn-default swalDefaultQuestion">
-                            <i class="fas fa-download"></i> @lang('crud.export  ')
-                        </button>
-                        <button type="button" class="btn btn-default swalDefaultQuestion">
-                            <i class="fas fa-file-import"></i> @lang('crud.import')
-                        </button>
-                    </div>
+                    <!-- /.card -->
+
                 </div>
             </div>
-        </div>
-    </div>
+            <!-- /.card -->
+
+
+
+    </section>
 @endsection
 
 @push('page_scripts')
@@ -159,6 +176,10 @@
                 search(searchQuery)
             })
             updatePaginationLinks()
+            var patientId = {{ request('patient_id') ?: 'null' }};
+    if (patientId) {
+        $("input[name='patientRadio'][value='" + patientId + "']").prop('checked', true);
+    }
         })
     </script>
 @endpush

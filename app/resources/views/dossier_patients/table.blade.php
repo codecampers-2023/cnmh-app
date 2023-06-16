@@ -49,9 +49,8 @@
             @include('adminlte-templates::common.paginate', ['records' => $dossierPatients])
         </div>
         <div class="float-left">
-            <button type="button" class="btn btn-default swalDefaultQuestion">
-                <i class="fas fa-download"></i> Exporter
-            </button>
+            <a class="btn btn-default swalDefaultQuestion" href="{{ route('dossier-patients.export') }}"><i class="fas fa-download"></i>Exporter</a>
+
             <button type="button" class="btn btn-default swalDefaultQuestion">
                 <i class="fas fa-file-import"></i> Importer
             </button>

@@ -12,6 +12,7 @@ use App\Http\Controllers\TypeHandicapController;
 use App\Http\Controllers\DossierPatientController;
 use App\Http\Controllers\NiveauScolaireController;
 use App\Http\Controllers\CouvertureMedicalController;
+use App\Http\Controllers\RendezVousController;
 
 /*
 |--------------------------------------------------------------------------
@@ -30,7 +31,6 @@ Route::post('/login', [LoginController::class, 'demo']);
 Route::get('/logout', LogoutController::class);
 
 Route::middleware('auth')->group(function () {
-    Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
     Route::resource('projects', App\Http\Controllers\ProjectController::class);
     // Route::resource('tasks', App\Http\Controllers\TaskController::class);
     // Route::resource('members', App\Http\Controllers\MemberController::class);
@@ -42,7 +42,6 @@ Route::middleware('auth')->group(function () {
     Route::resource('services', App\Http\Controllers\ServiceController::class);
     Route::get('/export_service', [ServiceController::class, 'export'])->name('services.export');
     Route::post('/import_service', [ServiceController::class, 'import'])->name('services.import');
-    Route::resource('niveauScolaires', App\Http\Controllers\NiveauScolaireController::class);
 
     //employes routes
     Route::resource('employes', App\Http\Controllers\EmployeController::class);
@@ -71,7 +70,14 @@ Route::middleware('auth')->group(function () {
 
 
     Route::resource('etatCivils', EtatCivilController::class);
-    Route::resource('rendez-vouses', App\Http\Controllers\RendezVousController::class);
+    // Route::resource('rendez-vouses', App\Http\Controllers\RendezVousController::class);
+    Route::get('/rendez-vous', [RendezVousController::class, 'index'])->name('rendez-vous.index');
+    Route::get('/rendez-vous/list_dossier', [RendezVousController::class, 'list_dossier'])->name('rendez-vous.list_dossier');
+    Route::post('rendez-vous/createe', [RendezVousController::class, 'create'])->name('rendez-vous.create');
+    Route::delete('rendez-vous/destroy/{id}', [RendezVousController::class, 'destroy'])->name('rendez-vous.destroy');
+    Route::get('rendez-vous/show/{id}', [RendezVousController::class, 'show'])->name('rendez-vous.show');
+    Route::get('rendez-vous/edit/{id}', [RendezVousController::class, 'edit'])->name('rendez-vous.edit');
+    Route::post('rendez-vous/store', [RendezVousController::class, 'store'])->name('rendez-vous.store');
 
     Route::prefix('/root')->group(function () {
         Route::controller(RootController::class)->group(function () {
@@ -96,4 +102,23 @@ Route::middleware('auth')->group(function () {
     Route::get('/patientForm', [DossierPatientController::class, 'patient'])->name('dossier-patients.patient');
     Route::get('/entretien/{query}', [DossierPatientController::class, 'entretien'])->name('dossier-patients.entretien');
     Route::post('/storeEntetien', [DossierPatientController::class, 'storeEntetien'])->name('dossier-patients.storeEntetien');
+
+    Route::get('/export_typehandicap', [TypeHandicapController::class, 'export'])->name('typehandicap.export');
+    Route::post('/import_typehandicap', [TypeHandicapController::class, 'import'])->name('typehandicap.import');
+
+
+    Route::resource('niveauScolaires', App\Http\Controllers\NiveauScolaireController::class);
+    Route::get('/export_niveauScolaires', [NiveauScolaireController::class, 'export'])->name('niveauScolaires.export');
+    Route::post('/import_niveauScolaires', [NiveauScolaireController::class, 'import'])->name('niveauScolaires.import');
+
+    // EtatCivil export and import
+    Route::get('/export_etatCivils', [EtatCivilController::class, 'export'])->name('etatCivils.export');
+    Route::post('/import_etatCivils', [EtatCivilController::class, 'import'])->name('etatCivils.import');
+    Route::resource('tuteurs', App\Http\Controllers\TuteurController::class);
+
+    Route::get('/parentForm', [DossierPatientController::class, 'parent'])->name('dossier-patients.parent');
+    Route::get('/patientForm', [DossierPatientController::class, 'patient'])->name('dossier-patients.patient');
+    Route::get('/entretien/{query}', [DossierPatientController::class, 'entretien'])->name('dossier-patients.entretien');
+    Route::post('/storeEntetien', [DossierPatientController::class, 'storeEntetien'])->name('dossier-patients.storeEntetien');
+    Route::get('/export', [DossierPatientController::class, 'export'])->name('dossier-patients.export');
 });

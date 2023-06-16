@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('patients', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('tuteur_id');
-            $table->unsignedBigInteger('niveau_scolaire_id')->nullable();
+            $table->unsignedBigInteger('niveau_scolaire_id');
             $table->string('nom');
             $table->string('prenom');
             $table->string('telephone')->nullable();

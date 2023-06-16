@@ -29,6 +29,21 @@ class ConsultationController extends AppBaseController
     public function index(Request $request, $modelName)
     {
         $title = $modelName;
+        $title  = ucFirst($title);
+        if($title == "Liste-attente"){
+            $consultations = DossierPatientConsultation::join('dossier_patients', 'dossier_patient_consultation.dossier_patient_id', '=', 'dossier_patients.id')
+            ->join('consultations', 'dossier_patient_consultation.consultation_id', '=', 'consultations.id')
+            ->join('patients', 'dossier_patients.patient_id', '=', 'patients.id')
+             ->where([
+                ["consultations.etat","enAttente"],
+                ["consultations.type","medecinGeneral"]
+             ])
+            ->select('*')
+            ->paginate();
+
+        }else{
+
+
         // $model = "App\\Models\\".ucfirst($modelName);
         $query = $request->input('query');
         $consultations = DossierPatientConsultation::join('dossier_patients', 'dossier_patient_consultation.dossier_patient_id', '=', 'dossier_patients.id')
@@ -42,6 +57,7 @@ class ConsultationController extends AppBaseController
             return view('consultations.table')
                 ->with('consultations', $consultations);
         }
+    }
 
         return view('consultations.index', compact('consultations', 'title'));
     }
@@ -161,7 +177,15 @@ class ConsultationController extends AppBaseController
 
     public function Ajouter_RendezVous()
     {
-        $dossier_patients = DossierPatient::select('*')->paginate();
+        $dossier_patients = DossierPatientConsultation::join('dossier_patients', 'dossier_patient_consultation.dossier_patient_id', '=', 'dossier_patients.id')
+        ->join('consultations', 'dossier_patient_consultation.consultation_id', '=', 'consultations.id')
+        ->join('patients', 'dossier_patients.patient_id', '=', 'patients.id')
+        ->where("consultations.etat","enRendezVous")
+        ->select('*')
+        ->paginate();
+
+
+
         return view('consultations.rendezVous', compact("dossier_patients"));
     }
 
