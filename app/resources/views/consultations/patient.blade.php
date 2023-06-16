@@ -178,7 +178,6 @@
                         </div>
                         <br>
 
-
                         <div id="information-part" class="content" role="tabpanel"
                             aria-labelledby="information-part-trigger">
                             <div class="d-flex">
@@ -267,10 +266,12 @@
                                 </div>
                             </div>
                             <input type="hidden" value="{{ request()->dossier_patients }} ">
+                            <input type="hidden" name="consultation_id" value=" }} ">
                             <div class="ml-4 mb-3">
                                 <a href="{{ route('consultations.rendezVous', request()->model) }} "
                                     class="btn btn-primary">Previous</a>
-                                <a href="{{ route('consultations.create', request()->model) }}?dossier_patients={{ request()->dossier_patients }}"
+                                <a href="{{ route('consultations.create', request()->model) }}?dossier_patients={{ request()->dossier_patients }}&consultation_id={{request()->query("consultation_id")}}"
+
                                     class="btn btn-primary">Next</a>
                             </div>
                         </div>

@@ -206,7 +206,7 @@
                                                             name="dossier_patients"
                                                             aria-label="Radio button for following text input">
                                                     </td>
-
+                                                    <input type="hidden" name="consultation_id" value="{{$dossier_patient->consultation_id}} ">
                                                     <td>{{ $dossier_patient->id }}</td>
                                                     <td>{{ $dossier_patient->numero_dossier }}</td>
                                                     <td>{{ $dossier_patient->nom }}</td>

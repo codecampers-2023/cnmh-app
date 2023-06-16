@@ -22,6 +22,8 @@
     </script>
 @endpush
 
+<input type="hidden" name="consultation_id" value="{{request()->query('consultation_id')}} ">
+
 <!-- Observation Field -->
 <div class="form-group col-sm-12 col-lg-12">
     {!! Form::label('observation', __('models/consultations.fields.observation').':') !!}

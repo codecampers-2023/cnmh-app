@@ -12,6 +12,7 @@ use App\Models\RendezVous;
 use App\Repositories\ConsultationRepository;
 use Illuminate\Http\Request;
 use Flash;
+use Illuminate\Database\Eloquent\Model;
 
 class ConsultationController extends AppBaseController
 {
@@ -50,6 +51,7 @@ class ConsultationController extends AppBaseController
             ->join('consultations', 'dossier_patient_consultation.consultation_id', '=', 'consultations.id')
             ->join('patients', 'dossier_patients.patient_id', '=', 'patients.id')
             ->where('consultations.type', $modelName)
+            ->where("consultations.etat","enConsultation")
             ->select('*')
             ->paginate();
         //  $consultations = $this->consultationRepository->where($model,'type',$modelName)->paginate();
@@ -76,22 +78,28 @@ class ConsultationController extends AppBaseController
      */
     public function store(CreateConsultationRequest $request, $model)
     {
+
         $input = $request->all();
+
+
         $Model = "App\\Models\\" . ucfirst($model);
         $callModel = new $Model;
-        $consultation= $callModel::create($input);
+        $consultation= $callModel::find($request->consultation_id)->update([
+            "date_enregistrement" => $request->date_enregistrement,
+            "date_consultation" =>$request->date_consultation,
+            "consultation_id" => $request->consultation_id,
+            "observation" => $request->observation,
+            "diagnostic" => $request->diagnostic,
+            "bilan" => $request->bilan,
+            "etat"=>"enConsultation"
+        ]);;
         // $consultation= $callModel::where('bilan',$input["bilan"])->get();
 
-        DossierPatientConsultation::create([
-            'dossier_patient_id'=>$input["dossier_patients"],
-            'consultation_id'=>$consultation->id,
-        ]);
 
-        // RendezVous::create([
-        //     'date_rendez_vous'=> $input['date_consultation'],
-        //     'consultation_id'=> $consultation->id,
-        //     'etat'=>"test"
-        // ]);
+
+
+
+
 
         // $consultation = $this->consultationRepository->create($input);
 
@@ -175,12 +183,14 @@ class ConsultationController extends AppBaseController
         return redirect()->back();
     }
 
-    public function Ajouter_RendezVous()
+    public function Ajouter_RendezVous(Request $request,$Model)
     {
+
         $dossier_patients = DossierPatientConsultation::join('dossier_patients', 'dossier_patient_consultation.dossier_patient_id', '=', 'dossier_patients.id')
         ->join('consultations', 'dossier_patient_consultation.consultation_id', '=', 'consultations.id')
         ->join('patients', 'dossier_patients.patient_id', '=', 'patients.id')
         ->where("consultations.etat","enRendezVous")
+        ->where("consultations.type",$Model)
         ->select('*')
         ->paginate();
 
