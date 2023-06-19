@@ -2,14 +2,10 @@
 
 @section('content')
     <section class="content-header">
-
-
         <div class="container-fluid">
 
         </div>
     </section>
-
-
     <section class="content">
         <div class="container-fluid ">
             @include('flash::message')

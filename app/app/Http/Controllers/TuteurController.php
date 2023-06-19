@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\CreateTuteurRequest;
 use App\Http\Requests\UpdateTuteurRequest;
 use App\Http\Controllers\AppBaseController;
+use App\Models\EtatCivil;
 use App\Repositories\TuteurRepository;
 use Illuminate\Http\Request;
 use Flash;
@@ -27,7 +28,6 @@ class TuteurController extends AppBaseController
 
         $query = $request->input('query');
         $tuteurs = $this->tuteurRepository->paginate($query);
-
         if ($request->ajax()) {
             return view('tuteurs.table')
                 ->with('tuteurs', $tuteurs);
@@ -42,7 +42,8 @@ class TuteurController extends AppBaseController
      */
     public function create()
     {
-        return view('tuteurs.create');
+        $etat_civil = EtatCivil::all();
+        return view('tuteurs.create', compact("etat_civil"));
     }
 
     /**
