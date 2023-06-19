@@ -24,10 +24,10 @@ class TuteurController extends AppBaseController
      */
     public function index(Request $request)
     {
-        
+
         $query = $request->input('query');
         $tuteurs = $this->tuteurRepository->paginate($query);
-       
+
         if ($request->ajax()) {
             return view('tuteurs.table')
                 ->with('tuteurs', $tuteurs);
@@ -50,13 +50,21 @@ class TuteurController extends AppBaseController
      */
     public function store(CreateTuteurRequest $request)
     {
+
+
         $input = $request->all();
 
         $tuteur = $this->tuteurRepository->create($input);
 
         Flash::success(__('messages.saved', ['model' => __('models/tuteurs.singular')]));
 
-        return redirect(route('tuteurs.index'));
+
+        if ($request->parentForm) {
+            return redirect("/patientForm?parentRadio=$tuteur->id");
+        } else {
+
+            return redirect(route('tuteurs.index'));
+        }
     }
 
     /**
@@ -67,7 +75,7 @@ class TuteurController extends AppBaseController
         $tuteur = $this->tuteurRepository->find($id);
 
         if (empty($tuteur)) {
-            Flash::error(__('models/tuteurs.singular').' '.__('messages.not_found'));
+            Flash::error(__('models/tuteurs.singular') . ' ' . __('messages.not_found'));
 
             return redirect(route('tuteurs.index'));
         }
@@ -83,7 +91,7 @@ class TuteurController extends AppBaseController
         $tuteur = $this->tuteurRepository->find($id);
 
         if (empty($tuteur)) {
-            Flash::error(__('models/tuteurs.singular').' '.__('messages.not_found'));
+            Flash::error(__('models/tuteurs.singular') . ' ' . __('messages.not_found'));
 
             return redirect(route('tuteurs.index'));
         }
@@ -99,7 +107,7 @@ class TuteurController extends AppBaseController
         $tuteur = $this->tuteurRepository->find($id);
 
         if (empty($tuteur)) {
-            Flash::error(__('models/tuteurs.singular').' '.__('messages.not_found'));
+            Flash::error(__('models/tuteurs.singular') . ' ' . __('messages.not_found'));
 
             return redirect(route('tuteurs.index'));
         }
@@ -121,7 +129,7 @@ class TuteurController extends AppBaseController
         $tuteur = $this->tuteurRepository->find($id);
 
         if (empty($tuteur)) {
-            Flash::error(__('models/tuteurs.singular').' '.__('messages.not_found'));
+            Flash::error(__('models/tuteurs.singular') . ' ' . __('messages.not_found'));
 
             return redirect(route('tuteurs.index'));
         }

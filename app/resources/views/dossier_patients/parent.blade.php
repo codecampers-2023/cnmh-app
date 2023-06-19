@@ -27,9 +27,10 @@
                         @include('dossier_patients.stepper')
                         <div class="card-header">
 
-                            <div class="col-sm-12 d-flex justify-content-between ">
+                            <div class="col-sm-12 d-flex justify-content-between">
                                 <div class="col-sm-6">
-                                    <a class="btn btn-primary " href="{{ route('tuteurs.create') }}">
+                                    <a class="btn btn-primary " href="{{ route('tuteurs.create') }}?=parentForm">
+
                                         @lang('crud.add_new') {{strtolower(__('models/tuteurs.singular'))}}
                                     </a>
                                 </div>
