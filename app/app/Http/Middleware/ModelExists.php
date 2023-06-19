@@ -26,7 +26,7 @@ class ModelExists
             return $next($request);
 
         }if(ucfirst($request->model) == "Liste-attente"){
-           
+
             return $next($request);
 
         } else {
