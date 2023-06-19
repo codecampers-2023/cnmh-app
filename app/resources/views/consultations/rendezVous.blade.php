@@ -198,11 +198,12 @@
                                             </tr>
                                         </thead>
                                         <tbody>
+                                         
                                             @foreach ($dossier_patients as $dossier_patient)
                                                 <tr>
                                                     <td>
 
-                                                        <input required type="radio" value="{{ $dossier_patient->id }}"
+                                                        <input required type="radio" value="{{ $dossier_patient->dossier_patient_id }}"
                                                             name="dossier_patients"
                                                             aria-label="Radio button for following text input">
                                                     </td>
