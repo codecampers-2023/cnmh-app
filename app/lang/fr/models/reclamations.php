@@ -1,16 +1,16 @@
 <?php
 
 return [
-    'singular' => 'Reclamation',
-    'plural' => 'Reclamations',
+    'singular' => 'Réclamation',
+    'plural' => 'Réclamations',
     "isMale" => "true",
     'fields' => [
-        'id' => 'Id',
-        'patient_id' => 'Patient Id',
+        'id' => 'ID',
+        'patient_id' => 'Patient',
         'objet' => 'Objet',
-        'reclamation' => 'Reclamation',
-        'date_reclamation' => 'Date Reclamation',
-        'created_at' => 'Created At',
-        'updated_at' => 'Updated At',
+        'reclamation' => 'Réclamation',
+        'date_reclamation' => 'Date de la réclamation',
+        'created_at' => 'Créé le',
+        'updated_at' => 'Mis à jour le',
     ],
 ];

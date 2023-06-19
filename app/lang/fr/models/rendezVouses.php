@@ -1,15 +1,15 @@
 <?php
 
 return [
-    'singular' => 'RendezVous',
-    'plural' => 'RendezVouses',
+    'singular' => 'Rendez-vous',
+    'plural' => 'Rendez-vous',
     'fields' => [
-        'id' => 'Id',
-        'consultation_id' => 'Consultation Id',
-        'date_rendez_vous' => 'Date Rendez Vous',
-        'etat' => 'Etat',
+        'id' => 'ID',
+        'consultation_id' => 'N° consultation',
+        'date_rendez_vous' => 'Date du rendez-vous',
+        'etat' => 'État',
         'remarques' => 'Remarques',
-        'created_at' => 'Created At',
-        'updated_at' => 'Updated At',
+        'created_at' => 'Créé le',
+        'updated_at' => 'Mis à jour le',
     ],
 ];

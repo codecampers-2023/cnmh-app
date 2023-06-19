@@ -4,7 +4,7 @@ return [
     'singular' => 'Fonction',
     'plural' => 'Fonctions',
     'fields' => [
-        'id' => 'Id',
+        'id' => 'N°',
         'nom' => 'Nom',
         'description' => 'Description',
         'created_at' => 'Created At',

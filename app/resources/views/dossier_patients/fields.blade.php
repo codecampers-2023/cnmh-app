@@ -14,7 +14,7 @@ $patientId = $explodeQuery[1];
 
 <!-- Fonction Field -->
 <div class="form-group col-sm-6">
-    {!! Form::label('type handycap', __('models/dossierPatients.fields.type_handicap_id') . ':') !!}
+    {!! Form::label("type d'handycapé", __('models/dossierPatients.fields.type_handicap_id') . ':') !!}
     {{ Form::select(
         'type_handicap_id',
         ['' => __('models/dossierPatients.fields.selecter.select_type_handicap_id')] + $type_handicap->pluck('nom', 'id')->toArray(),

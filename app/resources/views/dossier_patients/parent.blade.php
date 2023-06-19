@@ -64,7 +64,7 @@
                                                 <th>@lang('models/tuteurs.fields.prenom')</th>
                                                 <th>@lang('models/tuteurs.fields.telephone')</th>
                                                 <th>@lang('models/tuteurs.fields.email')</th>
-                                                <th>@lang('models/tuteurs.fields.email')</th>
+                                                <th>@lang('models/tuteurs.fields.adresse')</th>
                                                 <th> @lang('models/tuteurs.fields.etat_civil_id')</th>
 
                                                 {{-- <th>Cin</th>
