@@ -6,10 +6,10 @@ return [
     'plural' => 'Employés',
     'isMale' => true ,
     'fields' => [
-    'id' => 'Identifiant',
+    'id' => 'N°',
     'nom' => 'Nom',
     'prenom' => 'Prénom',
-    'email' => 'E-mail',
+    'email' => 'Email',
     'telephone' => 'Téléphone',
     'adresse' => 'Adresse',
     'date_naissance' => 'Date de naissance',

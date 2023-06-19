@@ -45,12 +45,12 @@ class AppMenuSeeder extends Seeder
             ],
 
             //menu service social
-            [
-                'nom' => __('Dossier social'),
-                'icon' => null,
-                'url' => 'dossier-patients.index',
-                'menu_group_id' => $serviceSocialGroup->id,
-            ],
+            // [
+            //     'nom' => __('Dossier social'),
+            //     'icon' => null,
+            //     'url' => 'dossier-patients.index',
+            //     'menu_group_id' => $serviceSocialGroup->id,
+            // ],
             [
 
                 'nom' => __("List d'attente"),
