@@ -3,14 +3,14 @@
         <table class="table table-striped" id="tuteurs-table">
             <thead>
             <tr>
-                <th>Etat Civil Id</th>
+                <th>État Civil</th>
                 <th>Nom</th>
-                <th>Prenom</th>
+                <th>Prénom</th>
                 <th>Sexe</th>
-                <th>Telephone</th>
+                <th>Téléphone</th>
                 <th>Email</th>
                 <th>Adresse</th>
-                <th>Cin</th>
+                <th>CIN</th>
                 <th>Remarques</th>
                 <th colspan="3">Action</th>
             </tr>
