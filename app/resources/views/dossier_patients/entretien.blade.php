@@ -41,10 +41,16 @@
                                         </div>
                                     </div>
 
+
+                                    @php
+                                        $url = request()->getPathInfo();
+                                        $query = explode('entretien/', $url);
+
+                                    @endphp
                                     <div class="card-footer">
-                                        <a href="{{ url()->previous() }}{{ strpos(url()->previous(), '?') ? '&' : '?' }}patient_id={{ request('patientRadio') }}"
+                                        <a href="/patientForm?{{ $query[1] }}"
                                             class="btn btn-primary">@lang('crud.previous')</a>
-                                           {!! Form::submit(__('crud.save'), ['class' => 'btn btn-primary']) !!}
+                                        {!! Form::submit(__('crud.save'), ['class' => 'btn btn-primary']) !!}
                                         {{-- <a href="{{ route('dossier-patients.index') }}" class="btn btn-default">
                                             @lang('crud.cancel') </a> --}}
                                     </div>

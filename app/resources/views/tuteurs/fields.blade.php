@@ -22,6 +22,17 @@
     {!! Form::text('sexe', null, ['class' => 'form-control', 'required', 'maxlength' => 255, 'maxlength' => 255]) !!}
 </div>
 
+
+
+
+@if (request()->getRequestUri()== "/tuteurs/create?=parentForm")
+
+<input type="hidden" name="parentForm" value="parentForm">
+
+@endif
+
+
+
 <!-- Telephone Field -->
 <div class="form-group col-sm-6">
     {!! Form::label('telephone', __('models/tuteurs.fields.telephone').':') !!}

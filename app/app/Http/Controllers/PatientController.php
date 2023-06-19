@@ -24,10 +24,10 @@ class PatientController extends AppBaseController
      */
     public function index(Request $request)
     {
-        
+
         $query = $request->input('query');
         $patients = $this->patientRepository->paginate($query);
-       
+
         if ($request->ajax()) {
             return view('patients.table')
                 ->with('patients', $patients);
@@ -50,13 +50,19 @@ class PatientController extends AppBaseController
      */
     public function store(CreatePatientRequest $request)
     {
+
         $input = $request->all();
 
         $patient = $this->patientRepository->create($input);
 
         Flash::success(__('messages.saved', ['model' => __('models/patients.singular')]));
 
-        return redirect(route('patients.index'));
+        if($request->parentRadio){
+
+        return redirect("/entretien/$request->parentRadio?patientRadio=$patient->id");
+    }
+    return redirect(route('patients.index'));
+
     }
 
     /**

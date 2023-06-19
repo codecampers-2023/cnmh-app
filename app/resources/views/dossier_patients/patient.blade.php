@@ -26,10 +26,9 @@
                         </div>
                         @include('dossier_patients.stepper')
                         <div class="card-header">
-
                             <div class="col-sm-12 d-flex justify-content-between ">
                                 <div class="col-sm-6">
-                                    <a class="btn btn-primary " href="{{ route('patients.create') }}">
+                                    <a class="btn btn-primary " href="{{ route('patients.create') }}?parentRadio={{request()->query("parentRadio")}}">
                                         @lang('crud.add_new') {{strtolower(__('models/patients.singular'))}}
                                     </a>
                                 </div>
@@ -59,7 +58,7 @@
                                         <thead>
                                             <tr>
                                                 <th></th>
-                                                <th>@lang('models/patients.fields.image')</th>
+                                                {{-- <th>@lang('models/patients.fields.image')</th> --}}
                                                 <th>@lang('models/patients.fields.nom')</th>
                                                 <th>@lang('models/patients.fields.prenom')</th>
                                                 <th>@lang('models/patients.fields.tuteur_id')</th>
@@ -79,7 +78,8 @@
                                                         <input type="radio" value="{{ $patient->id }}" name="patientRadio"
                                                         {{ $patient->id == request('patient_id') ? 'checked' : '' }}>
                                                     </td>
-                                                    <td>{{ $patient->image }}</td>
+
+                                                    {{-- <td> <img width="40" height="40" src="{{ $patient->image }}"></td> --}}
                                                     <td>{{ $patient->nom }}</td>
                                                     <td>{{ $patient->prenom }}</td>
                                                     <td>{{ $patient->parent->nom }}</td>
