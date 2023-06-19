@@ -14,7 +14,7 @@
 
     @else
     <div class="form-group col-sm-6">
-        {!! Form::label('tuteur_id', __('models/patients.fields.parent_id') . ':') !!}
+        {!! Form::label('tuteur_id', __('models/patients.fields.tuteur_id') . ':') !!}
         {!! Form::number('tuteur_id', null, ['class' => 'form-control', 'required']) !!}
     </div>
 
