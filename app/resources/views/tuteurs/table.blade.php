@@ -3,7 +3,7 @@
         <table class="table table-striped" id="tuteurs-table">
             <thead>
             <tr>
-                <th>État Civil</th>
+
                 <th>Nom</th>
                 <th>Prénom</th>
                 <th>Sexe</th>
@@ -11,14 +11,14 @@
                 <th>Email</th>
                 <th>Adresse</th>
                 <th>CIN</th>
-                <th>Remarques</th>
+
                 <th colspan="3">Action</th>
             </tr>
             </thead>
             <tbody>
             @foreach($tuteurs as $tuteur)
                 <tr>
-                    <td>{{ $tuteur->etat_civil_id }}</td>
+
                     <td>{{ $tuteur->nom }}</td>
                     <td>{{ $tuteur->prenom }}</td>
                     <td>{{ $tuteur->sexe }}</td>
@@ -26,7 +26,7 @@
                     <td>{{ $tuteur->email }}</td>
                     <td>{{ $tuteur->adresse }}</td>
                     <td>{{ $tuteur->cin }}</td>
-                    <td>{{ $tuteur->remarques }}</td>
+
                     <td  style="width: 120px">
                         {!! Form::open(['route' => ['tuteurs.destroy', $tuteur->id], 'method' => 'delete']) !!}
                         <div class='btn-group'>
@@ -34,11 +34,11 @@
                                class='btn btn-default btn-sm'>
                                 <i class="far fa-eye"></i>
                             </a>
-                            <a href="{{ route('tuteurs.edit', [$tuteur->id]) }}"
+                            {{-- <a href="{{ route('tuteurs.edit', [$tuteur->id]) }}"
                                class='btn btn-default btn-sm'>
                                 <i class="far fa-edit"></i>
-                            </a>
-                            {!! Form::button('<i class="far fa-trash-alt"></i>', ['type' => 'submit', 'class' => 'btn btn-danger btn-xs', 'onclick' => "return confirm('Are you sure?')"]) !!}
+                            </a> --}}
+                            {{-- {!! Form::button('<i class="far fa-trash-alt"></i>', ['type' => 'submit', 'class' => 'btn btn-danger btn-xs', 'onclick' => "return confirm('Are you sure?')"]) !!} --}}
                         </div>
                         {!! Form::close() !!}
                     </td>
