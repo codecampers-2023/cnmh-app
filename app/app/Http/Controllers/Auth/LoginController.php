@@ -7,6 +7,7 @@ use App\Models\User;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Session;
 
 class LoginController extends Controller
 {
@@ -41,25 +42,34 @@ class LoginController extends Controller
     }
 
     public function login(Request $request)
+    {
 
-    {$user = User::where([
-        ['name', $request->name],
-        ['password', $request->password]
-    ])->get();
+    $user = User::where([['name', $request->name],
+    ['password', $request->password]
+    ])->first();
+    if (!is_null($user->name)) {
 
-        if ($user->isNotEmpty()) {
-            // Authentication passed
-            return redirect()->intended('/');
-        } else {
-            // Authentication failed
-            return redirect()->back()->withErrors(['error' => 'Invalid name or password']);
-        }
+        // Authentication passed
 
+        session(['user' => $user->name]);
+
+        return redirect('/');
+    } else {
+        // Authentication failed
+        return redirect()->back()->withErrors(['error' => 'Invalid name or password']);
     }
 }
+
+function logout(){
+    Session::forget('user');
+    return redirect('/');
+}
+
+
+}
 // $user = User::where([
-//     ['name', $request->name],
-//     ['password', $request->password]
+//      ['name', $request->name],
+//   ['password', $request->password]
 // ])->get();
 
 // if($user[0] != null){

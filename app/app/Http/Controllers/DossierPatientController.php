@@ -30,6 +30,9 @@ class DossierPatientController extends AppBaseController
     public function __construct(DossierPatientRepository $dossierPatientRepo)
     {
         $this->dossierPatientRepository = $dossierPatientRepo;
+
+
+
     }
 
     /**

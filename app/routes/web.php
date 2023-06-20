@@ -28,15 +28,17 @@ use App\Http\Controllers\RendezVousController;
 //     return view('welcome');
 // });
 
-Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 Auth::routes();
 
 Route::post('login',[LoginController::class,'login'])->name("login");
+Route::post('logout',[LoginController::class,'logout'])->name("logout");
 
-Route::resource('projects', App\Http\Controllers\ProjectController::class);
-// Route::resource('tasks', App\Http\Controllers\TaskController::class);
-// Route::resource('members', App\Http\Controllers\MemberController::class);
+
+Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home')->middleware('login');
+Route::resource('projects',App\Http\Controllers\ProjectController::class);
+// Route::resource('tasks',App\Http\Controllers\TaskController::class);
+// Route::resource('members',App\Http\Controllers\MemberController::class);
 // couvertureMedicals
 Route::resource('couvertureMedicals', App\Http\Controllers\CouvertureMedicalController::class);
 Route::get('/export_couvertureMedicals',[CouvertureMedicalController::class,'export'])->name('couvertureMedicals.export');
