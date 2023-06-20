@@ -17,13 +17,24 @@
             <div class="clearfix"></div>
 
 
+            <section class="content-header">
+                <div class="container-fluid">
+                    <div class="row mb-2">
+                        <div class="col-sm-6">
+                            <h1>@lang('models/dossierPatients.plural')</h1>
+                        </div>
+                      
+                    </div>
+                </div>
+            </section>
             <div class="row">
 
                 <div class="col-md-12">
+
                     <div class="card card-default">
-                        <div class="card-header">
-                            <h3 class="card-title"></h3>
-                        </div>
+
+
+
                         @include('dossier_patients.stepper')
                         <div class="card-header">
 
@@ -108,6 +119,8 @@
 
                             </div>
                             <div class="ml-4 mb-3">
+                                <a href="{{ route('dossier-patients.index')}}"  class="btn btn-secondary">@lang('crud.cancel')</a>                                {{-- <a href="{{ route('dossier-patients.parent') }}" class="btn btn-primary">@lang('crud.previous')</a> --}}
+
                                 <button id="next-button" class="btn btn-primary">@lang('crud.next')</button>
 
                             </div>

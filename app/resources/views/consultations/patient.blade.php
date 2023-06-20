@@ -194,7 +194,7 @@
                                                 </td>
                                             <tr>
                                                 <td>
-                                                    Numero:
+                                                    Numéro:
                                                 </td>
                                                 <td>
                                                     {{ $dossier_patient->numero_dossier }}
@@ -220,7 +220,7 @@
                                             </tr>
                                             <tr>
                                                 <td>
-                                                    Telephone:
+                                                    Téléphone:
                                                 </td>
                                                 <td>
                                                     {{ $dossier_patient->patient->telephone }}
@@ -228,7 +228,7 @@
                                             </tr>
                                             <tr>
                                                 <td>
-                                                    CIN/Numéro d'état civil:
+                                                    CIN:
                                                 </td>
                                                 <td>
                                                     {{ $dossier_patient->patient->cin }}
@@ -269,10 +269,10 @@
                             <input type="hidden" name="consultation_id" value=" }} ">
                             <div class="ml-4 mb-3">
                                 <a href="{{ route('consultations.rendezVous', request()->model) }} "
-                                    class="btn btn-primary">Previous</a>
+                                    class="btn btn-primary">@lang('crud.previous')</a>
                                 <a href="{{ route('consultations.create', request()->model) }}?dossier_patients={{ request()->dossier_patients }}&consultation_id={{request()->query("consultation_id")}}"
 
-                                    class="btn btn-primary">Next</a>
+                                    class="btn btn-primary">@lang('crud.next')</a>
                             </div>
                         </div>
 
