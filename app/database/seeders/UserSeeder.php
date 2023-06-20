@@ -17,9 +17,9 @@ class UserSeeder extends Seeder
 
         $user = User::insert([
             [
-                'name' => 'Khawla souan',
-                'email' => 'khawla@gmail.com',
-                'password'=>'123456',
+                'name' => 'admin',
+                'email' => 'admin@gmail.com',
+                'password'=>'admin',
                 'created_at' => $now,
                 'updated_at' => $now,
             ],
