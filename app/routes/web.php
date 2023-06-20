@@ -33,9 +33,8 @@ Auth::routes();
 
 Route::post('login',[LoginController::class,'login'])->name("login");
 Route::post('logout',[LoginController::class,'logout'])->name("logout");
-
-
-Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home')->middleware('login');
+Route::group(['middleware' => ['Login']], function () {
+Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::resource('projects',App\Http\Controllers\ProjectController::class);
 // Route::resource('tasks',App\Http\Controllers\TaskController::class);
 // Route::resource('members',App\Http\Controllers\MemberController::class);
@@ -109,3 +108,4 @@ Route::get('/patientForm',[DossierPatientController::class,'patient'])->name('do
 Route::get('/entretien/{query}',[DossierPatientController::class,'entretien'])->name('dossier-patients.entretien');
 Route::post('/storeEntetien',[DossierPatientController::class,'storeEntetien'])->name('dossier-patients.storeEntetien');
 Route::get('/export',[DossierPatientController::class,'export'] )->name('dossier-patients.export');
+});
