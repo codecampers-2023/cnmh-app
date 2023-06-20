@@ -54,23 +54,16 @@ class PatientController extends AppBaseController
      */
     public function store(CreatePatientRequest $request)
     {
+        $input = $request->all();
         if ($request->hasFile('image')) {
             $image = $request->file('image');
-            if ($image->isValid()) {
-                $imageName = time().'.'.$request->image->extension();
+            $filename = time().'.'.$image->getClientOriginalExtension();
+            $path = public_path('assets/images/' . $filename);
+            $image->move(public_path('assets/images'), $filename);
+            $input['image'] = 'assets/images/' . $filename;
 
-                if ($image->move(public_path('assets/images'), $imageName)) {
-                    $input['image'] = $imageName;
-                } else {
-                    echo $image->getErrorMessage();
-                }
-            } else {
-                // Handle the case where the uploaded file is not valid
-            }
-        } else {
-            // Handle the case where no file was uploaded
         }
-        $input = $request->all();
+
 
         $patient = $this->patientRepository->create($input);
 

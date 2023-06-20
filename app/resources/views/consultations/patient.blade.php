@@ -198,7 +198,7 @@
                                             <tr>
                                                 <td>
                                                     <img width="99" height="99"
-                                                        src="{{ $dossier_patient->patient->image }}">
+                                                        src="{{ asset($dossier_patient->patient->image) }}">
                                                 </td>
                                                 <td>
                                                 </td>
@@ -267,7 +267,7 @@
                                                 Remarques:
                                             </td>
                                             <td>
-                                                ??
+                                                {{ $dossier_patient->patient->remarques}}
                                             </td>
                                             </tr>
 
