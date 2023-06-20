@@ -29,7 +29,7 @@
                                 alt="">
                             <p>
                                 {{-- Auth::user()->name --}}
-                                <small>Member since {{-- Auth::user()->created_at->format('M. Y') --}}</small>
+                                <small>Membre depuis{{-- Auth::user()->created_at->format('M. Y') --}}</small>
                             </p>
                         </li>
                         <!-- Menu Footer-->
@@ -37,7 +37,7 @@
                             <a href="#" class="btn btn-default btn-flat">Profile</a>
                             <a href="#" class="btn btn-default btn-flat float-right"
                                 onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
-                                Sign out
+                                Déconnexion
                             </a>
                             <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
                                 @csrf
@@ -55,12 +55,13 @@
         <div class="content-wrapper">
             @yield('content')
         </div>
+@env ('staging')
 
+@endenv
         <!-- Main Footer -->
         <footer class="main-footer">
             <strong>
-                Copyright &copy; 2023-2024 CNMH.</strong> All rights
-            reserved.
+                Copyright &copy; 2023-2024 CNMH.</strong> Tous droits réservés.
         </footer>
     </div>
 @endsection
