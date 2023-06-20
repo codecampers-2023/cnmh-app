@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Http\Requests\CreatePatientRequest;
 use App\Http\Requests\UpdatePatientRequest;
 use App\Http\Controllers\AppBaseController;
+use App\Models\NiveauScolaire;
+use App\Models\Tuteur;
 use App\Repositories\PatientRepository;
 use Illuminate\Http\Request;
 use Flash;
@@ -42,7 +44,9 @@ class PatientController extends AppBaseController
      */
     public function create()
     {
-        return view('patients.create');
+        $tuteur = Tuteur::all();
+        $niveau_s = NiveauScolaire::all();
+        return view('patients.create',compact("tuteur","niveau_s"));
     }
 
     /**

@@ -1,6 +1,7 @@
 <?php
 
 return [
+
     'singular' => 'Tuteur',
     'plural' => 'Tuteurs',
     'fields' => [

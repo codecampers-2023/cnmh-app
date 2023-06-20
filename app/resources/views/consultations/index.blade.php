@@ -6,14 +6,24 @@
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                    <h1>@lang('models/consultations.plural') {{$title}}</h1>
+
+                    @if ($titleApp == "Liste d'attente")
+                    <h1>{{ $titleApp }}</h1>
+
+                    @else
+                    <h1>@lang('models/consultations.plural') {{$titleApp}}</h1>
+                    @endif
                 </div>
+                @if ($titleApp == "Liste d'attente")
+
+                @else
                 <div class="col-sm-6">
                     <a class="btn btn-primary float-right"
                        href="{{ route('consultations.rendezVous',$title)}}">
                          @lang('crud.add_new') Consultation
                     </a>
                 </div>
+                @endif
             </div>
         </div>
     </section>
