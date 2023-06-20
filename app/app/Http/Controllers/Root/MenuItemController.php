@@ -26,10 +26,10 @@ class MenuItemController extends AppBaseController
      */
     public function index(Request $request)
     {
-        
+
         $query = $request->input('query');
         $menuItems = $this->menuItemRepository->paginate($query);
-       
+
         if ($request->ajax()) {
             return view('root.menu_items.table')
                 ->with('menuItems', $menuItems);

@@ -47,6 +47,7 @@ class LoginController extends Controller
     $user = User::where([['name', $request->name],
     ['password', $request->password]
     ])->first();
+    if($user){
     if (!is_null($user->name)) {
 
         // Authentication passed
@@ -58,6 +59,10 @@ class LoginController extends Controller
         // Authentication failed
         return redirect()->back()->withErrors(['error' => 'Invalid name or password']);
     }
+}else {
+    // Authentication failed
+    return redirect()->back()->withErrors(['error' => 'Invalid name or password']);
+}
 }
 
 function logout(){
