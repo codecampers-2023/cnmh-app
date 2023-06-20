@@ -227,10 +227,11 @@
 
                             </div>
                             <div class="ml-4 mb-3">
-                                <a href="{{ route('rendez-vous.index') }}"
-                                    class="btn btn-default">@lang('crud.previous')</a>
-                                {{-- <div name="rendezVous" value="false" class="btn btn-primary">Ajouter sans RendezVous</div> --}}
                                 <button   class="btn btn-primary">@lang('crud.next')</button>
+                                <a href="{{ route('rendez-vous.index') }}"
+                                    class="btn btn-secondary">@lang('crud.cancel')</a>
+                                {{-- <div name="rendezVous" value="false" class="btn btn-primary">Ajouter sans RendezVous</div> --}}
+
                             </div>
                             </form>
                             <div class="card-footer clearfix">
