@@ -3,10 +3,11 @@
 return [
     'singular' => 'Rendez-vous',
     'plural' => 'Rendez-vous',
+    "isMale" => "true",
     'fields' => [
         'id' => 'ID',
         'consultation_id' => 'N° consultation',
-        'date_rendez_vous' => 'Date du rendez-vous',
+        'date_rendez_vous' => 'Date rendez-vous',
         'etat' => 'État',
         'remarques' => 'Remarques',
         'created_at' => 'Créé le',

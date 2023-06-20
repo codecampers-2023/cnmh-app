@@ -4,9 +4,9 @@
             <thead>
             <tr>
                 <th>Nom</th>
-                <th>Prenom</th>
-                <th>Telephone</th>
-                <th>Date Enregistrement</th>
+                <th>Prénom</th>
+                <th>Téléphone</th>
+                <th>Date d'enregistrement</th>
                 <th>Date Consultation</th>
                 <th colspan="3">Action</th>
             </tr>
@@ -46,10 +46,10 @@
         </div>
         <div class="float-left">
                                 <button type="button" class="btn btn-default swalDefaultQuestion">
-                                    <i class="fas fa-download"></i> Exporter
+                                    <i class="fas fa-download"></i> @lang('crud.export')
                                 </button>
                                 <button type="button" class="btn btn-default swalDefaultQuestion">
-                                    <i class="fas fa-file-import"></i> Importer
+                                    <i class="fas fa-file-import"></i> @lang('crud.import')
                                 </button>
         </div>
     </div>

@@ -3,7 +3,7 @@
         <table class="table table-striped" id="dossier-patients-table">
             <thead>
                 <tr>
-                    <th>Numero Dossier</th>
+                    <th>N° dossier</th>
                     <th>Patient</th>
                     {{-- <th>Couverture Medical</th> --}}
                     <th>État de processus</th>
@@ -17,7 +17,7 @@
                     <td>{{ $dossierPatient->numero_dossier }}</td>
                     <td>{{ $dossierPatient->patient->nom }}</td>
                     {{-- <td>{{ $dossierPatient->couvertureMedical->nom }}</td> --}}
-                    <td>{{ $dossierPatient->etat }}</td>
+                    <td><span class="badge bg-success">{{ $dossierPatient->etat }}</span></td>
                     {{-- <td>{{ $dossierPatient->date_enregsitrement }}</td> --}}
 
                     <td style="width: 120px">
@@ -29,12 +29,12 @@
                                 class='btn btn-default btn-sm'>
                                 <i class="far fa-eye"></i>
                             </a>
-                            <a href="{{ route('dossier-patients.edit', [$dossierPatient->id]) }}"
+                            {{-- <a href="{{ route('dossier-patients.edit', [$dossierPatient->id]) }}"
                                 class='btn btn-default btn-sm'>
                                 <i class="far fa-edit"></i>
                             </a>
                             {!! Form::button('<i class="far fa-trash-alt"></i>', ['type' => 'submit', 'class' => 'btn
-                            btn-danger btn-xs', 'onclick' => "return confirm('Are you sure?')"]) !!}
+                            btn-danger btn-xs', 'onclick' => "return confirm('Are you sure?')"]) !!} --}}
                         </div>
                         {!! Form::close() !!}
                     </td>
@@ -49,10 +49,10 @@
             @include('adminlte-templates::common.paginate', ['records' => $dossierPatients])
         </div>
         <div class="float-left">
-            <a class="btn btn-default swalDefaultQuestion" href="{{ route('dossier-patients.export') }}"><i class="fas fa-download"></i>Exporter</a>
+            <a class="btn btn-default swalDefaultQuestion" href="{{ route('dossier-patients.export') }}"><i class="fas fa-download"></i>@lang('crud.export')</a>
 
             <button type="button" class="btn btn-default swalDefaultQuestion">
-                <i class="fas fa-file-import"></i> Importer
+                <i class="fas fa-file-import"></i> @lang('crud.import')
             </button>
         </div>
     </div>

@@ -150,6 +150,16 @@
             @include('flash::message')
 
             <div class="clearfix"></div>
+            <section class="content-header">
+                <div class="container-fluid">
+                    <div class="row mb-2">
+                        <div class="col-sm-6">
+                            <h1>@lang('models/rendezVouses.plural')</h1>
+                        </div>
+
+                    </div>
+                </div>
+            </section>
 
 
             <div class="row">
@@ -160,7 +170,7 @@
                         <div class="md-stepper-horizontal orange">
                             <div class="md-step active done">
                                 <div class="md-step-circle"><span>1</span></div>
-                                <div class="md-step-title">liste dossier patient</div>
+                                <div class="md-step-title">Liste d'attente</div>
                                 <div class="md-step-bar-left"></div>
                                 <div class="md-step-bar-right"></div>
                             </div>
@@ -217,10 +227,10 @@
 
                             </div>
                             <div class="ml-4 mb-3">
-                                <a href=" "
-                                    class="btn btn-primary">Previous</a>
-                                <div name="rendezVous" value="false" class="btn btn-primary">Ajouter sans RendezVous</div>
-                                <button  class="btn btn-primary">next</button>
+                                <a href="{{ route('rendez-vous.index') }}"
+                                    class="btn btn-default">@lang('crud.previous')</a>
+                                {{-- <div name="rendezVous" value="false" class="btn btn-primary">Ajouter sans RendezVous</div> --}}
+                                <button   class="btn btn-primary">@lang('crud.next')</button>
                             </div>
                             </form>
                             <div class="card-footer clearfix">
@@ -229,6 +239,7 @@
                                         'records' => $dossier_patients,
                                     ])
                                 </div>
+
 
                             </div>
                         </div>

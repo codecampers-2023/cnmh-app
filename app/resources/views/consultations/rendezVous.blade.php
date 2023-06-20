@@ -198,7 +198,7 @@
                                             </tr>
                                         </thead>
                                         <tbody>
-                                         
+
                                             @foreach ($dossier_patients as $dossier_patient)
                                                 <tr>
                                                     <td>
@@ -223,9 +223,9 @@
                             </div>
                             <div class="ml-4 mb-3">
                                 <a href="{{ route('consultations.index', request()->model) }} "
-                                    class="btn btn-primary">Previous</a>
-                                <div name="rendezVous" value="false" class="btn btn-primary">Ajouter sans RendezVous</div>
-                                <button  class="btn btn-primary">next</button>
+                                    class="btn btn-primary">@lang('crud.previous')</a>
+                                {{-- <div name="rendezVous" value="false" class="btn btn-primary">Ajouter sans RendezVous</div> --}}
+                                <button  class="btn btn-primary">@lang('crud.next')</button>
                             </div>
                             </form>
                             <div class="card-footer clearfix">
