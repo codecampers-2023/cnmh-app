@@ -16,6 +16,7 @@
             </ul>
 
             <ul class="navbar-nav ml-auto">
+                <li class="nav-item" style="margin-top: 7px">{{ucFirst(Session::get('user') ) }}</li>
                 <li class="nav-item dropdown user-menu">
                     <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">
                         <img src="{{ asset('assets/images/user-avatar.png') }}"
@@ -29,7 +30,7 @@
                                 alt="">
                             <p>
                                 {{-- Auth::user()->name --}}
-                                <small>Membre depuis{{-- Auth::user()->created_at->format('M. Y') --}}</small>
+                                <small>{{ucFirst(Session::get('user') ) }} {{-- Auth::user()->created_at->format('M. Y') --}}</small>
                             </p>
                         </li>
                         <!-- Menu Footer-->

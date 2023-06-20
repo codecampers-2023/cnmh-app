@@ -1,5 +1,6 @@
 @foreach (app_menu() as $group => $items)
     @if (strlen($group) < 1)
+
         @foreach ($items as $item)
             <li class="nav-item">
                 <a href="{{ Route::has($item->url) ? route($item->url) : $item->url }}"
