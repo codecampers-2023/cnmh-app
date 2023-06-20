@@ -23,6 +23,23 @@ class UserSeeder extends Seeder
                 'created_at' => $now,
                 'updated_at' => $now,
             ],
+            [
+                'name' => 'service social',
+                'email' => 'social@gmail.com',
+                'password'=>'social',
+                'created_at' => $now,
+                'updated_at' => $now,
+            ],
+            [
+                'name' => 'Medecin generale',
+                'email' => 'medecin@gmail.com',
+                'password'=>'medecin',
+                'created_at' => $now,
+                'updated_at' => $now,
+            ],
+
+
+
 
         ]);
 
