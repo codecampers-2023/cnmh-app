@@ -76,7 +76,7 @@
     <!-- Image Field -->
     <div class="form-group col-sm-6">
         {!! Form::label('image', __('models/patients.fields.image') . ':') !!}
-        {!! Form::text('image', null, ['class' => 'form-control', 'maxlength' => 255, 'maxlength' => 255]) !!}
+        {!! Form::file('image', ['class' => 'form-control']) !!}
     </div>
 
     <!-- Adresse Field -->
