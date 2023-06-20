@@ -15,7 +15,12 @@
     @else
     <div class="form-group col-sm-6">
         {!! Form::label('tuteur_id', __('models/patients.fields.tuteur_id') . ':') !!}
-        {!! Form::number('tuteur_id', null, ['class' => 'form-control', 'required']) !!}
+        {{ Form::select(
+            'tuteur_id',
+            ['' => "-- Sélectionner le tuteur --"] + $tuteur->pluck('nom', 'id')->toArray(),
+            old('tuteur_id'),
+            ['class' => 'form-control', 'required']
+        ) }}
     </div>
 
 @endif
@@ -30,7 +35,12 @@
     <!-- Niveau Scolaire Id Field -->
     <div class="form-group col-sm-6">
         {!! Form::label('niveau_scolaire_id', __('models/patients.fields.niveau_scolaire_id') . ':') !!}
-        {!! Form::number('niveau_scolaire_id', null, ['class' => 'form-control']) !!}
+        {{ Form::select(
+            'niveau_scolaire_id',
+            ['' => "-- Sélectionner le niveau scolaire --"] + $niveau_s->pluck('nom', 'id')->toArray(),
+            old('niveau_scolaire_id'),
+            ['class' => 'form-control', 'required']
+        ) }}
     </div>
 
     <!-- Nom Field -->
