@@ -1,13 +1,3 @@
-<!-- Etat Civil Id Field -->
-<div class="form-group col-sm-6">
-    {!! Form::label('etat_civil_id', __('models/tuteurs.fields.etat_civil_id') . ':') !!}
-    {{ Form::select(
-        'etat_civil_id',
-        ['' => "-- Sélectionner l'état civil  --"] + $etat_civil->pluck('nom', 'id')->toArray(),
-        old('etat_civil_id'),
-        ['class' => 'form-control', 'required'],
-    ) }}
-</div>
 
 
 <!-- Nom Field -->
@@ -18,7 +8,7 @@
         'required',
         'maxlength' => 255,
         'maxlength' => 255,
-    ]) !!}
+        ]) !!}
 </div>
 
 <!-- Prenom Field -->
@@ -29,7 +19,7 @@
         'required',
         'maxlength' => 255,
         'maxlength' => 255,
-    ]) !!}
+        ]) !!}
 </div>
 
 <!-- Sexe Field -->
@@ -44,9 +34,19 @@
 
 
 @if (request()->getRequestUri() == '/tuteurs/create?=parentForm')
-    <input type="hidden" name="parentForm" value="parentForm">
+<input type="hidden" name="parentForm" value="parentForm">
 @endif
 
+<!-- Etat Civil Id Field -->
+<div class="form-group col-sm-6">
+    {!! Form::label('etat_civil_id', __('models/tuteurs.fields.etat_civil_id') . ':') !!}
+    {{ Form::select(
+        'etat_civil_id',
+        ['' => "-- Sélectionner l'état civil  --"] + $etat_civil->pluck('nom', 'id')->toArray(),
+        old('etat_civil_id'),
+        ['class' => 'form-control', 'required'],
+    ) }}
+</div>
 
 <!-- Telephone Field -->
 <div class="form-group col-sm-6">

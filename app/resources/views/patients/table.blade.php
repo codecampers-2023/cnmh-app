@@ -4,29 +4,32 @@
             <thead>
             <tr>
 
+                <th>Image</th>
                 <th>Nom</th>
                 <th>Prenom</th>
                 <th>Telephone</th>
                 <th>Cin</th>
                 <th>Email</th>
-                <th>Image</th>
                 <th>Adresse</th>
-                <th>Remarques</th>
+
                 <th colspan="3">Action</th>
             </tr>
             </thead>
             <tbody>
             @foreach($patients as $patient)
-                <tr>
+            <tr>
 
+                <td>
+                    <img width="99" height="99"
+                        src="{{ $patient->image }}">
+                </td>
                     <td>{{ $patient->nom }}</td>
                     <td>{{ $patient->prenom }}</td>
                     <td>{{ $patient->telephone }}</td>
                     <td>{{ $patient->cin }}</td>
                     <td>{{ $patient->email }}</td>
-                    <td>{{ $patient->image }}</td>
                     <td>{{ $patient->adresse }}</td>
-                    <td>{!! $patient->remarques !!}</td>
+
                     <td  style="width: 120px">
                         {!! Form::open(['route' => ['patients.destroy', $patient->id], 'method' => 'delete']) !!}
                         <div class='btn-group'>
