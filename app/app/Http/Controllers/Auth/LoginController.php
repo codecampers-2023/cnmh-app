@@ -3,8 +3,10 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use App\Models\User;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
+use Illuminate\Http\Request;
 
 class LoginController extends Controller
 {
@@ -37,4 +39,31 @@ class LoginController extends Controller
     {
         $this->middleware('guest')->except('logout');
     }
+
+    public function login(Request $request)
+
+    {$user = User::where([
+        ['name', $request->name],
+        ['password', $request->password]
+    ])->get();
+
+        if ($user->isNotEmpty()) {
+            // Authentication passed
+            return redirect()->intended('/');
+        } else {
+            // Authentication failed
+            return redirect()->back()->withErrors(['error' => 'Invalid name or password']);
+        }
+
+    }
 }
+// $user = User::where([
+//     ['name', $request->name],
+//     ['password', $request->password]
+// ])->get();
+
+// if($user[0] != null){
+//     return redirect('/');
+// }else{
+//     return redirect("login");
+

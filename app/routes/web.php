@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\ConsultationController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\EmployeController;
@@ -30,6 +31,8 @@ use App\Http\Controllers\RendezVousController;
 Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 Auth::routes();
+
+Route::post('login',[LoginController::class,'login'])->name("login");
 
 Route::resource('projects', App\Http\Controllers\ProjectController::class);
 // Route::resource('tasks', App\Http\Controllers\TaskController::class);
