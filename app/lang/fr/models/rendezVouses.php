@@ -4,6 +4,7 @@ return [
     'singular' => 'Rendez-vous',
     'plural' => 'Rendez-vous',
     "isMale" => "true",
+    "schedule"=>"Planifier",
     'fields' => [
         'id' => 'ID',
         'consultation_id' => 'N° consultation',

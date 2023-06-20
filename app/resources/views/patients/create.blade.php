@@ -40,12 +40,12 @@
 
                     @if (request()->getRequestUri() == '/patients/create')
                     <div class="ml-auto p-2 bd-highlight">
-                        <a href="{{ route('patients.index') }}" class="btn btn-default"> @lang('crud.cancel')
+                        <a href="{{ route('patients.index') }}" class="btn btn-secondary"> @lang('crud.cancel')
                         </a>
                     </div>
                     @else
                     <div class="ml-auto p-2 bd-highlight">
-                        <a href="{{  url()->previous() }}" class="btn btn-default"> @lang('crud.cancel')
+                        <a href="{{  url()->previous() }}" class="btn btn-secondary"> @lang('crud.cancel')
                         </a>
                     </div>
 

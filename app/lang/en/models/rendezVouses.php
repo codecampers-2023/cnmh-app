@@ -3,6 +3,7 @@
 return [
     'singular' => 'RendezVous',
     'plural' => 'RendezVouses',
+    "schedule"=>"Schedule",
     'fields' => [
         'id' => 'Id',
         'id_consultation' => 'Id Consultation',

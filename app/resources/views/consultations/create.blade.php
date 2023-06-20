@@ -23,7 +23,7 @@
                     <div class="col-md-12  ">
                         <div class="card card-primary card-create ">
                             <div class="card-header">
-                                <h3 class="card-title"> @lang('crud.create')
+                                <h3 class="card-title"> @lang('models/rendezVouses.schedule')
                                     @if (app()->getLocale() == 'fr')
                                         {{ is_male_localisation('models/rendezVouses.isMale') }} @lang(strtolower(__('models/rendezVouses.singular')))
                                     @else

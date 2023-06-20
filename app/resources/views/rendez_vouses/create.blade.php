@@ -45,7 +45,7 @@
                                         {!! Form::submit(__('crud.save'), ['class' => 'btn btn-primary']) !!}
                                     </div>
                                     <div class="ml-auto p-2 bd-highlight">
-                                        <a href="{{ route('rendez-vous.index') }}" class="btn btn-secondary"> @lang('crud.cancel')
+                                        <a href="{{ route('rendez-vous.list_dossier') }}" class="btn btn-secondary"> @lang('crud.cancel')
                                         </a>
                                     </div>
                                 </div>

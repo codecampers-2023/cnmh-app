@@ -17,8 +17,8 @@
                 <tr>
                     <td>{{ $rendezVous->consultation_id }}</td>
                     <td>{{ $rendezVous->date_rendez_vous }}</td>
-                    <td><span class="badge bg-info">{!! $rendezVous->etat !!}</span></td>
-                    <td>{{ $rendezVous->remarques }}</td>
+                    <td><span class="badge bg-info">{{  $rendezVous->etat  }}</span></td>
+                    <td>{!! $rendezVous->remarques !!}</td>
                     <td  style="width: 120px">
                         {!! Form::open(['route' => ['rendez-vous.destroy', $rendezVous->id], 'method' => 'delete']) !!}
                         <div class='btn-group'>
@@ -35,6 +35,7 @@
                         {!! Form::close() !!}
                     </td>
                 </tr>
+                
             @endforeach
             </tbody>
         </table>
