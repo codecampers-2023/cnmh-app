@@ -31,7 +31,7 @@ class UserSeeder extends Seeder
                 'updated_at' => $now,
             ],
             [
-                'name' => 'Medecin generale',
+                'name' => 'Medecin générale',
                 'email' => 'medecin@gmail.com',
                 'password'=>'medecin',
                 'created_at' => $now,
