@@ -267,7 +267,7 @@
                                                 Remarques:
                                             </td>
                                             <td>
-                                                {{ $dossier_patient->patient->remarques}}
+                                                {!! $dossier_patient->patient->remarques !!}
                                             </td>
                                             </tr>
 
